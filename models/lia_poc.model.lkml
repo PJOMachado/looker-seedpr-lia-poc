@@ -11,7 +11,7 @@ datagroup: lia_poc_default_datagroup {
 persist_with: lia_poc_default_datagroup
 
 explore: student_results {
-  sql_always_where: sql_always_where: (array_length(({{ _user_attributes['group_ids']}})) = 0 or ${class_uuid} in unnest(({{ _user_attributes['group_ids']}})))
+  sql_always_where: (array_length(({{ _user_attributes['group_ids']}})) = 0 or ${class_uuid} in unnest(({{ _user_attributes['group_ids']}})))
   and (array_length(({{ _user_attributes['organization_ids']}})) = 0 or ${school_uuid} in unnest(({{ _user_attributes['organization_ids']}})));;
 
   join: student_results__response_words {
