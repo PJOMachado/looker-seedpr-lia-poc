@@ -150,6 +150,11 @@ view: student_results {
     value_format: "0%"
   }
 
+  measure: student_reader_profile {
+    type: string
+    sql: if(${avg_hit_percentage}<0.6,"PRÉ-LEITOR",if(${avg_hit_percentage}>=0.6 AND ${avg_hit_percentage}<0.9,"LEITOR INICIANTE",if(${avg_hit_percentage}>=0.9,"LEITOR FLUENTE","0"))) ;;
+    value_format: ""
+  }
 }
 
 view: student_results__response_words {
