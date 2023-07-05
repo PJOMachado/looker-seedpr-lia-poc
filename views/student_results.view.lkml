@@ -159,7 +159,7 @@ view: student_results {
 
 measure: student_reader_profile_updated {
   type: string
-  sql: if(${sum_response_amount_hits}=0,"PRÉ-LEITOR - Nivel 1",if(${sum_response_amount_hits}>0 AND ${sum_response_amount_hits}<=10,"PRÉ-LEITOR - Nivel 2",if(${sum_response_amount_hits}>=11 AND ${sum_response_amount_hits}<59,"Iniciante",if(${sum_response_amount_hits}>=59,"Fluente","0")))) ;;
+  sql: if(${sum_response_amount_hits}=0,"PRÉ-LEITOR - NÍVEL 1",if(${sum_response_amount_hits}>0 AND ${sum_response_amount_hits}<=10,"PRÉ-LEITOR - NÍVEL 2",if(${sum_response_amount_hits}>=11 AND ${sum_response_amount_hits}<59,"INICIANTE",if(${sum_response_amount_hits}>=59,"FLUENTE","0")))) ;;
   value_format: ""
 }
 
