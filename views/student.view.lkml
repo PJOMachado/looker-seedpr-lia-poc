@@ -21,18 +21,16 @@ view: student {
       GROUP BY 1,2,3,4,5,6,7,8,9
       ;;
   }
+  drill_fields: [uuid]
 
   dimension: uuid {
     type: string
+    primary_key: yes
     sql: ${TABLE}.student_results_student_uuid ;;
   }
   dimension: name {
     type: string
     sql: ${TABLE}.student_results_student_name ;;
-  }
-  dimension: student_results_student_uuid {
-    type: string
-    sql: ${TABLE}.student_results_student_uuid ;;
   }
   dimension: class_name {
     type: string
@@ -40,7 +38,7 @@ view: student {
   }
   dimension: school_name {
     type: string
-    sql: ${TABLE}.school_name ;;
+    sql: ${TABLE}.student_results_school_name ;;
   }
   dimension: school_region {
     type: string
@@ -69,7 +67,7 @@ view: student {
 
   dimension: prova_completa {
     type: yesno
-    sql: case ${student_results_count}=2 then 1 else 0 end ;;
+    sql: CASE ${student_results_count} WHEN 2 THEN true else false end ;;
 
   }
 
@@ -79,7 +77,7 @@ view: student {
   }
 
   measure: count {
-    type: count_distinct
+    type: count
   }
 
 }
