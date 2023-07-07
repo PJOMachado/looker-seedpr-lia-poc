@@ -26,3 +26,5 @@ explore: student_results {
     relationship: one_to_many
   }
 }
+
+explore: student {}
