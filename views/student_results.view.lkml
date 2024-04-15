@@ -114,6 +114,11 @@ view: student_results {
     sql: ${TABLE}.school_region ;;
   }
 
+  dimension: school_county {
+    type: string
+    sql: ${TABLE}.school_county ;;
+  }
+
   dimension: school_uuid {
     type: string
     sql: ${TABLE}.school_uuid ;;
