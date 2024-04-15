@@ -129,6 +129,22 @@ view: student_results {
     sql: ${TABLE}.student_uuid ;;
   }
 
+
+  measure: user_rating {
+    type: string
+    sql: case WHEN COUNT(CASE WHEN ${TABLE}.user_rating = 'Leitor Fluente' THEN 1 END) > 0 THEN 'Leitor Fluente'
+          WHEN COUNT(CASE WHEN ${TABLE}.user_rating = 'Leitor Iniciante' THEN 1 END) > 0 THEN 'Leitor Iniciante'
+          WHEN COUNT(CASE WHEN ${TABLE}.user_rating = 'Pré-leitor 4' THEN 1 END) > 0 THEN 'Pré-leitor 4'
+          WHEN COUNT(CASE WHEN ${TABLE}.user_rating = 'Pré-leitor 1' THEN 1 END) > 0 THEN 'Pré-leitor 1'
+          ELSE 'Sem Classificação' end  ;;
+  }
+
+  measure: total_provas_feitas {
+    type: count_distinct
+    sql: CONCAT(${student_results.student_uuid}, ${student_results.exam_uuid}) ;;
+  }
+
+
   measure: count {
     type: count
     drill_fields: [school_name, student_name, exam_name, class_name]
