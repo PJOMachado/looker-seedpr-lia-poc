@@ -138,7 +138,7 @@ view: student_results {
   measure: user_rating {
     type: string
     sql: case WHEN COUNT(CASE WHEN ${TABLE}.user_rating = 'Leitor Fluente' THEN 1 END) > 0 THEN 'Leitor Fluente'
-          WHEN COUNT(CASE WHEN ${TABLE}.user_rating = 'Leitor Iniciante' THEN 1 END) > 0 THEN 'Leitor Iniciante'
+          WHEN COUNT(CASE WHEN ${TABLE}.user_rating = 'Leitor Iniciante' THEN 1 END) > 1 THEN 'Leitor Iniciante'
           WHEN COUNT(CASE WHEN ${TABLE}.user_rating = 'Pré-leitor 4' THEN 1 END) > 0 THEN 'Pré-leitor 4'
           WHEN COUNT(CASE WHEN ${TABLE}.user_rating = 'Pré-leitor 1' THEN 1 END) > 0 THEN 'Pré-leitor 1'
           ELSE 'Sem Classificação' end  ;;
