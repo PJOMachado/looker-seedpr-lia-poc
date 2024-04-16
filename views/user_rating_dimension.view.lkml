@@ -33,8 +33,7 @@ view: user_rating_dimension {
           8,
           9
       ORDER BY
-          10 DESC
-      LIMIT 500 ;;
+          10 DESC ;;
   }
 
   measure: count {
