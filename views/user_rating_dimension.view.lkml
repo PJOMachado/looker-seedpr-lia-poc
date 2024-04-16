@@ -32,9 +32,10 @@ view: user_rating_dimension {
           6,
           7,
           8,
-          9
+          9,
+          10
       ORDER BY
-          10 DESC ;;
+          11 DESC ;;
   }
 
   measure: count {
@@ -92,7 +93,7 @@ view: user_rating_dimension {
     sql: ${TABLE}.student_results_user_rating ;;
   }
 
-  dimension_group: response_timestamp {
+  dimension_group: student_results_response_timestamp {
     type: time
     timeframes: [
       raw,
@@ -112,16 +113,16 @@ view: user_rating_dimension {
 
   set: detail {
     fields: [
-        student_results_school_name,
-  student_results_class_name,
-  student_results_school_city,
-  student_results_school_county,
-  student_results_school_region,
-  student_results_exam_uuid,
-  student_results_exam_name,
-  student_results_student_uuid,
-  student_results_student_name,
-  student_results_user_rating
+      student_results_school_name,
+      student_results_class_name,
+      student_results_school_city,
+      student_results_school_county,
+      student_results_school_region,
+      student_results_exam_uuid,
+      student_results_exam_name,
+      student_results_student_uuid,
+      student_results_student_name,
+      student_results_user_rating
     ]
   }
 }
