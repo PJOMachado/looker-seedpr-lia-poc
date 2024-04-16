@@ -171,19 +171,6 @@ view: student_results {
     value_format: "0%"
   }
 
-  measure: student_reader_profile {
-    type: string
-    sql: if(${avg_hit_percentage}<0.6,"PRÉ-LEITOR",if(${avg_hit_percentage}>=0.6 AND ${avg_hit_percentage}<0.9,"LEITOR INICIANTE",if(${avg_hit_percentage}>=0.9,"LEITOR FLUENTE","0"))) ;;
-    value_format: ""
-  }
-
-
-measure: student_reader_profile_updated {
-  type: string
-  sql: if(${sum_response_amount_hits}=0,"PRÉ-LEITOR - NÍVEL 1",if(${sum_response_amount_hits}>0 AND ${sum_response_amount_hits}<=10,"PRÉ-LEITOR - NÍVEL 2",if(${sum_response_amount_hits}>=11 AND ${sum_response_amount_hits}<59,"INICIANTE",if(${sum_response_amount_hits}>=59,"FLUENTE","0")))) ;;
-  value_format: ""
-}
-
 }
 view: student_results__response_words {
   dimension: student_results__response_words {

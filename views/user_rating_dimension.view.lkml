@@ -91,6 +91,11 @@ view: user_rating_dimension {
     sql: ${TABLE}.student_results_user_rating ;;
   }
 
+  measure: total_provas_feitas {
+    type: count_distinct
+    sql: CONCAT(${user_rating_dimension.student_results_student_uuid}, ${user_rating_dimension.student_results_exam_uuid}) ;;
+  }
+
   set: detail {
     fields: [
         student_results_school_name,
