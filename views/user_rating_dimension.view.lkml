@@ -1,5 +1,5 @@
 
-view: user_rating_dimensionj {
+view: user_rating_dimension {
   derived_table: {
     sql: SELECT
           student_results.school_name  AS student_results_school_name,
@@ -95,15 +95,15 @@ view: user_rating_dimensionj {
   set: detail {
     fields: [
         student_results_school_name,
-	student_results_class_name,
-	student_results_school_city,
-	student_results_school_county,
-	student_results_school_region,
-	student_results_exam_uuid,
-	student_results_exam_name,
-	student_results_student_uuid,
-	student_results_student_name,
-	student_results_user_rating
+  student_results_class_name,
+  student_results_school_city,
+  student_results_school_county,
+  student_results_school_region,
+  student_results_exam_uuid,
+  student_results_exam_name,
+  student_results_student_uuid,
+  student_results_student_name,
+  student_results_user_rating
     ]
   }
 }
