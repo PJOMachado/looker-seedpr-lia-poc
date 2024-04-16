@@ -30,3 +30,5 @@ explore: student_results {
 }
 
 explore: student {}
+
+explore: user_rating_dimension {}
