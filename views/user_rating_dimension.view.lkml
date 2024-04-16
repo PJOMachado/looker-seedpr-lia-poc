@@ -7,6 +7,7 @@ view: user_rating_dimension {
           student_results.school_city  AS student_results_school_city,
           student_results.school_county  AS student_results_school_county,
           student_results.school_region  AS student_results_school_region,
+          student_results.response_timestamp  AS student_results_response_timestamp,
           student_results.exam_uuid  AS student_results_exam_uuid,
           student_results.exam_name  AS student_results_exam_name,
           student_results.student_uuid  AS student_results_student_uuid,
@@ -91,6 +92,19 @@ view: user_rating_dimension {
     sql: ${TABLE}.student_results_user_rating ;;
   }
 
+  dimension_group: response_timestamp {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.student_results_response_timestamp ;;
+  }
   measure: total_provas_feitas {
     type: count_distinct
     sql: CONCAT(${user_rating_dimension.student_results_student_uuid}, ${user_rating_dimension.student_results_exam_uuid}) ;;
