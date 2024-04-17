@@ -1,41 +1,36 @@
-
 view: user_rating_dimension {
   derived_table: {
-    sql: SELECT
-          student_results.school_name  AS student_results_school_name,
-          student_results.class_name  AS student_results_class_name,
-          student_results.school_city  AS student_results_school_city,
-          student_results.school_county  AS student_results_school_county,
-          student_results.school_region  AS student_results_school_region,
-          student_results.response_timestamp  AS student_results_response_timestamp,
-          student_results.exam_uuid  AS student_results_exam_uuid,
-          student_results.exam_name  AS student_results_exam_name,
-          student_results.student_uuid  AS student_results_student_uuid,
-          student_results.student_name  AS student_results_student_name,
-          case WHEN COUNT(CASE WHEN student_results.user_rating = 'Leitor Fluente' THEN 1 END) > 0 THEN 'Leitor Fluente'
-                WHEN COUNT(CASE WHEN student_results.user_rating = 'Leitor Iniciante' THEN 1 END) > 1 THEN 'Leitor Iniciante'
-                WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 4' THEN 1 END) > 0 THEN 'Pré-leitor 4'
-                WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 1' THEN 1 END) > 0 THEN 'Pré-leitor 1'
-                ELSE 'Sem Classificação' end   AS student_results_user_rating
-      FROM `dataset_lia.student_results`
-           AS student_results
-      WHERE ((array_length(([])) = 0 or student_results.class_uuid in unnest(([])))
-            and (array_length(([])) = 0 or student_results.school_uuid in unnest(([])))
-            and ("null" = "null" or student_results.school_county = "null")
-            and ("null" = "null" or student_results.school_region = "null"))
+    sql: |
+      SELECT
+        student_results.school_name AS student_results_school_name,
+        student_results.class_name AS student_results_class_name,
+        student_results.school_city AS student_results_school_city,
+        student_results.school_county AS student_results_school_county,
+        student_results.school_region AS student_results_school_region,
+        student_results.response_timestamp AS student_results_response_timestamp,
+        student_results.exam_uuid AS student_results_exam_uuid,
+        student_results.exam_name AS student_results_exam_name,
+        student_results.student_uuid AS student_results_student_uuid,
+        student_results.student_name AS student_results_student_name,
+        CASE
+          WHEN COUNT(CASE WHEN student_results.user_rating = 'Leitor Fluente' THEN 1 END) > 0 THEN 'Leitor Fluente'
+          WHEN COUNT(CASE WHEN student_results.user_rating = 'Leitor Iniciante' THEN 1 END) > 1 THEN 'Leitor Iniciante'
+          WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 4' THEN 1 END) > 0 THEN 'Pré-leitor 4'
+          WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 1' THEN 1 END) > 0 THEN 'Pré-leitor 1'
+          ELSE 'Sem Classificação'
+        END AS student_results_user_rating
+      FROM dataset_lia.student_results AS student_results
+      WHERE (
+        (array_length([]) = 0 or student_results.class_uuid IN UNNEST([]))
+        AND (array_length([]) = 0 or student_results.school_uuid IN UNNEST([]))
+        AND ("null" = "null" or student_results.school_county = "null")
+        AND ("null" = "null" or student_results.school_region = "null")
+      )
       GROUP BY
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8,
-          9,
-          10
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10
       ORDER BY
-          11 DESC ;;
+        11 DESC;
+    ;;
   }
 
   measure: count {
@@ -46,6 +41,12 @@ view: user_rating_dimension {
   dimension: student_results_school_name {
     type: string
     sql: ${TABLE}.student_results_school_name ;;
+  }
+
+
+  dimension: student_results_user_rating {
+    type: string
+    sql: ${TABLE}.student_results_user_rating ;;
   }
 
   dimension: student_results_class_name {
@@ -86,11 +87,6 @@ view: user_rating_dimension {
   dimension: student_results_student_name {
     type: string
     sql: ${TABLE}.student_results_student_name ;;
-  }
-
-  dimension: student_results_user_rating {
-    type: string
-    sql: ${TABLE}.student_results_user_rating ;;
   }
 
   dimension_group: student_results_response_timestamp {
