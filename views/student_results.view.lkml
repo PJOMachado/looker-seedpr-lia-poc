@@ -152,7 +152,7 @@ view: student_results {
 
   measure: count {
     type: count
-    drill_fields: [school_name, student_name, exam_name, class_name]
+    drill_fields: [school_name, student_name, exam_name, class_name, user_rating]
   }
 
   measure: sum_response_amount_hits{
