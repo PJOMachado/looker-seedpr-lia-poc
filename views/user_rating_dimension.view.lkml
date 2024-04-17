@@ -1,6 +1,6 @@
 view: user_rating_dimension {
   derived_table: {
-    sql: |
+    sql: >
       SELECT
         student_results.school_name AS student_results_school_name,
         student_results.class_name AS student_results_class_name,
