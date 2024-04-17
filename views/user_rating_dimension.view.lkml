@@ -26,7 +26,7 @@ view: user_rating_dimension {
         AND ("null" = "null" or student_results.school_region = "null")
       )
       GROUP BY
-        6, 8, 1, 2;
+        6, 8, 1, 2
     ;;
   }
 
