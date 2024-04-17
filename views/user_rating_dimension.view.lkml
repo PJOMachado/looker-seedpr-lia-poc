@@ -4,14 +4,13 @@ view: user_rating_dimension {
       SELECT
         student_results.school_name AS student_results_school_name,
         student_results.class_name AS student_results_class_name,
-        student_results.school_city AS student_results_school_city,
-        student_results.school_county AS student_results_school_county,
-        student_results.school_region AS student_results_school_region,
-        student_results.response_timestamp AS student_results_response_timestamp,
+        ANY_VALUE(student_results.school_city) AS student_results_school_city,
+        ANY_VALUE(student_results.school_county) AS student_results_school_county,
+        ANY_VALUE(student_results.school_region) AS student_results_school_region,
         student_results.exam_uuid AS student_results_exam_uuid,
-        student_results.exam_name AS student_results_exam_name,
+        ANY_VALUE(student_results.exam_name) AS student_results_exam_name,
         student_results.student_uuid AS student_results_student_uuid,
-        student_results.student_name AS student_results_student_name,
+        ANY_VALUE(student_results.student_name) AS student_results_student_name,
         CASE
           WHEN COUNT(CASE WHEN student_results.user_rating = 'Leitor Fluente' THEN 1 END) > 0 THEN 'Leitor Fluente'
           WHEN COUNT(CASE WHEN student_results.user_rating = 'Leitor Iniciante' THEN 1 END) > 1 THEN 'Leitor Iniciante'
@@ -27,9 +26,7 @@ view: user_rating_dimension {
         AND ("null" = "null" or student_results.school_region = "null")
       )
       GROUP BY
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-      ORDER BY
-        11 DESC
+        6, 8, 1, 2;
     ;;
   }
 
@@ -42,7 +39,6 @@ view: user_rating_dimension {
     type: string
     sql: ${TABLE}.student_results_school_name ;;
   }
-
 
   dimension: student_results_user_rating {
     type: string
@@ -102,6 +98,7 @@ view: user_rating_dimension {
     ]
     sql: ${TABLE}.student_results_response_timestamp ;;
   }
+
   measure: total_provas_feitas {
     type: count_distinct
     sql: CONCAT(${user_rating_dimension.student_results_student_uuid}, ${user_rating_dimension.student_results_exam_uuid}) ;;
