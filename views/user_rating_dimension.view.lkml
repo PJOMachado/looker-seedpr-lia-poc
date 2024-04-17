@@ -29,7 +29,7 @@ view: user_rating_dimension {
       GROUP BY
         1, 2, 3, 4, 5, 6, 7, 8, 9, 10
       ORDER BY
-        11 DESC;
+        11 DESC
     ;;
   }
 
