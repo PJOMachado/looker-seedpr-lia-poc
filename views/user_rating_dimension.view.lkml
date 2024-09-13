@@ -16,6 +16,8 @@ view: user_rating_dimension {
                 WHEN COUNT(CASE WHEN student_results.user_rating = 'Leitor Fluente' THEN 1 END) > 0 THEN 'Leitor Fluente'
                 WHEN COUNT(CASE WHEN student_results.user_rating = 'Leitor Iniciante' THEN 1 END) > 1 THEN 'Leitor Iniciante'
                 WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 4' THEN 1 END) > 0 THEN 'Pré-leitor 4'
+                WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 3' THEN 1 END) > 0 THEN 'Pré-leitor 3'
+                WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 2' THEN 1 END) > 0 THEN 'Pré-leitor 2'
                 WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 1' THEN 1 END) > 0 THEN 'Pré-leitor 1'
                 ELSE 'Sem Classificação'
               END AS student_results_user_rating
