@@ -31,4 +31,9 @@ explore: student_results {
 
 explore: student {}
 
-explore: user_rating_dimension {}
+explore: user_rating_dimension {
+  sql_always_where: (array_length(({{ _user_attributes['group_ids']}})) = 0 or ${class_uuid} in unnest(({{ _user_attributes['group_ids']}})))
+      and (array_length(({{ _user_attributes['organization_ids']}})) = 0 or ${school_uuid} in unnest(({{ _user_attributes['organization_ids']}})))
+      and ("{{ _user_attributes['county']}}" = "null" or ${school_county} = "{{ _user_attributes['county']}}")
+      and ("{{ _user_attributes['region']}}" = "null" or ${school_region} = "{{ _user_attributes['region']}}");;
+}

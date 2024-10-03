@@ -36,6 +36,11 @@ view: user_rating_dimension {
     sql: ${TABLE}.student_results_school_name ;;
   }
 
+  dimension: class_uuid {
+    type: string
+    sql: ${TABLE}.class_uuid ;;
+  }
+
   dimension: student_results_user_rating {
     type: string
     sql: ${TABLE}.student_results_user_rating ;;
@@ -79,6 +84,21 @@ view: user_rating_dimension {
   dimension: student_results_student_name {
     type: string
     sql: ${TABLE}.student_results_student_name ;;
+  }
+
+  dimension: school_region {
+    type: string
+    sql: ${TABLE}.school_region ;;
+  }
+
+  dimension: school_county {
+    type: string
+    sql: ${TABLE}.school_county ;;
+  }
+
+  dimension: school_uuid {
+    type: string
+    sql: ${TABLE}.school_uuid ;;
   }
 
   dimension_group: student_results_response_timestamp {
