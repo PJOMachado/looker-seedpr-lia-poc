@@ -4,8 +4,6 @@ view: user_rating_dimension {
       SELECT
               student_results.school_name AS student_results_school_name,
               student_results.class_name AS student_results_class_name,
-              ANY_VALUE(student_results.school_uuid) AS student_results_school_uuid,
-              ANY_VALUE(student_results.class_uuid) AS student_results_class_uuid,
               ANY_VALUE(student_results.school_city) AS student_results_school_city,
               ANY_VALUE(student_results.school_county) AS student_results_school_county,
               ANY_VALUE(student_results.school_region) AS student_results_school_region,
@@ -14,6 +12,8 @@ view: user_rating_dimension {
               student_results.student_uuid AS student_results_student_uuid,
               ANY_VALUE(student_results.student_name) AS student_results_student_name,
               max(student_results.response_timestamp) AS student_results_response_timestamp,
+              ANY_VALUE(student_results.school_uuid) AS student_results_school_uuid,
+              ANY_VALUE(student_results.class_uuid) AS student_results_class_uuid,
               CASE
                 WHEN COUNT(CASE WHEN student_results.user_rating = 'Leitor Fluente' THEN 1 END) > 0 THEN 'Leitor Fluente'
                 WHEN COUNT(CASE WHEN student_results.user_rating = 'Leitor Iniciante' THEN 1 END) > 1 THEN 'Leitor Iniciante'
