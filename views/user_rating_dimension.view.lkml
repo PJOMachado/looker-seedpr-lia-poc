@@ -23,9 +23,10 @@ view: user_rating_dimension {
           END AS student_results_user_rating
       FROM
           dataset_lia.student_results AS student_results
-      WHERE
-          (ARRAY_LENGTH([]) = 0 OR student_results.class_uuid IN UNNEST([]))
-          AND (ARRAY_LENGTH([]) = 0 OR student_results.school_uuid IN UNNEST([]))
+      WHERE (
+          (array_length([]) = 0 or student_results.class_uuid IN UNNEST([]))
+          AND (array_length([]) = 0 or student_results.school_uuid IN UNNEST([]))
+        )
       GROUP BY
           student_results.exam_uuid,
           student_results.student_uuid,
