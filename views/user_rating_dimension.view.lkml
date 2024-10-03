@@ -4,6 +4,10 @@ view: user_rating_dimension {
       SELECT
               student_results.school_name AS student_results_school_name,
               student_results.class_name AS student_results_class_name,
+              student_results.school_uuid AS student_results_school_uuid,
+              student_results.class_uuid AS student_results_class_uuid,
+              student_results.school_county AS student_results_school_county,
+              student_results.school_region AS student_results_school_region,
               ANY_VALUE(student_results.school_city) AS student_results_school_city,
               ANY_VALUE(student_results.school_county) AS student_results_school_county,
               ANY_VALUE(student_results.school_region) AS student_results_school_region,
@@ -38,7 +42,7 @@ view: user_rating_dimension {
 
   dimension: class_uuid {
     type: string
-    sql: ${TABLE}.class_uuid ;;
+    sql: ${TABLE}.student_results_class_uuid ;;
   }
 
   dimension: student_results_user_rating {
@@ -88,17 +92,17 @@ view: user_rating_dimension {
 
   dimension: school_region {
     type: string
-    sql: ${TABLE}.school_region ;;
+    sql: ${TABLE}.student_results_school_region ;;
   }
 
   dimension: school_county {
     type: string
-    sql: ${TABLE}.school_county ;;
+    sql: ${TABLE}.student_results_school_county ;;
   }
 
   dimension: school_uuid {
     type: string
-    sql: ${TABLE}.school_uuid ;;
+    sql: ${TABLE}.student_results_school_uuid ;;
   }
 
   dimension_group: student_results_response_timestamp {
