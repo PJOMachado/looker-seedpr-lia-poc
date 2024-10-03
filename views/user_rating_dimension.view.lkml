@@ -2,37 +2,28 @@ view: user_rating_dimension {
   derived_table: {
     sql:
       SELECT
-          student_results.school_name AS student_results_school_name,
-          student_results.class_name AS student_results_class_name,
-          ANY_VALUE(student_results.school_city) AS student_results_school_city,
-          ANY_VALUE(student_results.school_county) AS student_results_school_county,
-          ANY_VALUE(student_results.school_region) AS student_results_school_region,
-          student_results.exam_uuid AS student_results_exam_uuid,
-          ANY_VALUE(student_results.exam_name) AS student_results_exam_name,
-          student_results.student_uuid AS student_results_student_uuid,
-          ANY_VALUE(student_results.student_name) AS student_results_student_name,
-          MAX(student_results.response_timestamp) AS student_results_response_timestamp,
-          CASE
-              WHEN COUNT(CASE WHEN student_results.user_rating = 'Leitor Fluente' THEN 1 END) > 0 THEN 'Leitor Fluente'
-              WHEN COUNT(CASE WHEN student_results.user_rating = 'Leitor Iniciante' THEN 1 END) > 1 THEN 'Leitor Iniciante'
-              WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 4' THEN 1 END) > 0 THEN 'Pré-leitor 4'
-              WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 3' THEN 1 END) > 0 THEN 'Pré-leitor 3'
-              WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 2' THEN 1 END) > 0 THEN 'Pré-leitor 2'
-              WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 1' THEN 1 END) > 0 THEN 'Pré-leitor 1'
-              ELSE 'Sem Classificação'
-          END AS student_results_user_rating
-      FROM
-          dataset_lia.student_results AS student_results
-      WHERE (
-          (array_length([]) = 0 or student_results.class_uuid IN UNNEST([]))
-          AND (array_length([]) = 0 or student_results.school_uuid IN UNNEST([]))
-        )
-      GROUP BY
-          student_results.exam_uuid,
-          student_results.student_uuid,
-          student_results.school_name,
-          student_results.class_name;
-    ;;
+              student_results.school_name AS student_results_school_name,
+              student_results.class_name AS student_results_class_name,
+              ANY_VALUE(student_results.school_city) AS student_results_school_city,
+              ANY_VALUE(student_results.school_county) AS student_results_school_county,
+              ANY_VALUE(student_results.school_region) AS student_results_school_region,
+              student_results.exam_uuid AS student_results_exam_uuid,
+              ANY_VALUE(student_results.exam_name) AS student_results_exam_name,
+              student_results.student_uuid AS student_results_student_uuid,
+              ANY_VALUE(student_results.student_name) AS student_results_student_name,
+              max(student_results.response_timestamp) AS student_results_response_timestamp,
+              CASE
+                WHEN COUNT(CASE WHEN student_results.user_rating = 'Leitor Fluente' THEN 1 END) > 0 THEN 'Leitor Fluente'
+                WHEN COUNT(CASE WHEN student_results.user_rating = 'Leitor Iniciante' THEN 1 END) > 1 THEN 'Leitor Iniciante'
+                WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 4' THEN 1 END) > 0 THEN 'Pré-leitor 4'
+                WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 3' THEN 1 END) > 0 THEN 'Pré-leitor 3'
+                WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 2' THEN 1 END) > 0 THEN 'Pré-leitor 2'
+                WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 1' THEN 1 END) > 0 THEN 'Pré-leitor 1'
+                ELSE 'Sem Classificação'
+              END AS student_results_user_rating
+            FROM dataset_lia.student_results AS student_results
+            GROUP BY 6,8,1,2
+            ;;
   }
 
   measure: count {
