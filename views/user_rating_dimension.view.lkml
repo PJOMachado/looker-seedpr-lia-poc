@@ -4,10 +4,8 @@ view: user_rating_dimension {
       SELECT
               student_results.school_name AS student_results_school_name,
               student_results.class_name AS student_results_class_name,
-              student_results.school_uuid AS student_results_school_uuid,
-              student_results.class_uuid AS student_results_class_uuid,
-              student_results.school_county AS student_results_school_county,
-              student_results.school_region AS student_results_school_region,
+              ANY_VALUE(student_results.school_uuid) AS student_results_school_uuid,
+              ANY_VALUE(student_results.class_uuid) AS student_results_class_uuid,
               ANY_VALUE(student_results.school_city) AS student_results_school_city,
               ANY_VALUE(student_results.school_county) AS student_results_school_county,
               ANY_VALUE(student_results.school_region) AS student_results_school_region,
