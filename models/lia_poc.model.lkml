@@ -2,6 +2,7 @@ connection: "lia_bq_poc_table"
 
 # include all the views
 include: "/views/**/*.view"
+include: "/dashboard/*.dashboard"
 
 datagroup: lia_poc_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
