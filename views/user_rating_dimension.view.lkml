@@ -28,10 +28,7 @@ view: user_rating_dimension {
             ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: [detail*]
-  }
+
 
   dimension: student_results_school_name {
     type: string
@@ -103,6 +100,7 @@ view: user_rating_dimension {
     sql: ${TABLE}.student_results_school_uuid ;;
   }
 
+
   dimension_group: student_results_response_timestamp {
     type: time
     timeframes: [
@@ -117,9 +115,24 @@ view: user_rating_dimension {
     sql: ${TABLE}.student_results_response_timestamp ;;
   }
 
+  measure: count {
+    type: count
+    drill_fields: [detail*]
+  }
+
   measure: total_provas_feitas {
     type: count_distinct
     sql: CONCAT(${user_rating_dimension.student_results_student_uuid}, ${user_rating_dimension.student_results_exam_uuid}) ;;
+  }
+
+  measure: total_escolas {
+    type: count_distinct
+    sql: ${student_results_school_name} ;;
+  }
+
+  measure: total_turmas {
+    type: count_distinct
+    sql: CONCAT(${student_results_school_name}, ${student_results_class_name}) ;;
   }
 
   set: detail {
