@@ -127,12 +127,12 @@ view: user_rating_dimension {
 
   measure: total_escolas {
     type: count_distinct
-    sql: ${student_results_school_name} ;;
+    sql: ${school_uuid} ;;
   }
 
   measure: total_turmas {
     type: count_distinct
-    sql: CONCAT(${student_results_school_name}, ${student_results_class_name}) ;;
+    sql: CONCAT(${school_uuid}, ${class_uuid}) ;;
   }
 
   set: detail {
