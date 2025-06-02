@@ -24,6 +24,7 @@ view: user_rating_dimension {
                 ELSE 'Sem Classificação'
               END AS student_results_user_rating
             FROM dataset_lia.student_results AS student_results
+            WHERE student_results.exam_uuid = '891ad89f-3a1f-4f3b-a745-aaec6247b334'
             GROUP BY 6,8,1,2
             ;;
   }
