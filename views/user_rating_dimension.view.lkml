@@ -15,13 +15,13 @@ view: user_rating_dimension {
               ANY_VALUE(student_results.school_uuid) AS student_results_school_uuid,
               ANY_VALUE(student_results.class_uuid) AS student_results_class_uuid,
               CASE
-                WHEN COUNT(CASE WHEN student_results.user_rating = 'Leitor Fluente' THEN 1 END) > 0 THEN 'Leitor Fluente'
-                WHEN COUNT(CASE WHEN student_results.user_rating = 'Leitor Iniciante' THEN 1 END) > 1 THEN 'Leitor Iniciante'
-                WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 4' THEN 1 END) > 0 THEN 'Pré-leitor 4'
-                WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 3' THEN 1 END) > 0 THEN 'Pré-leitor 3'
-                WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 2' THEN 1 END) > 0 THEN 'Pré-leitor 2'
-                WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 1' THEN 1 END) > 0 THEN 'Pré-leitor 1'
-                ELSE 'Sem Classificação'
+                  WHEN COUNT(CASE WHEN student_results.user_rating = 'Leitor Fluente' THEN 1 END) > 0 THEN 'Leitor Fluente'
+                  WHEN COUNT(CASE WHEN student_results.user_rating = 'Leitor Iniciante 2' THEN 1 END) > 0 THEN 'Leitor Iniciante 2' -- Nova categoria, assumindo precedência sobre LI 1
+                  WHEN COUNT(CASE WHEN student_results.user_rating = 'Leitor Iniciante 1' THEN 1 END) > 0 THEN 'Leitor Iniciante 1' -- Nova categoria
+                  WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 3' THEN 1 END) > 0 THEN 'Pré-leitor 3'         -- Pré-leitor 4 removido
+                  WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 2' THEN 1 END) > 0 THEN 'Pré-leitor 2'
+                  WHEN COUNT(CASE WHEN student_results.user_rating = 'Pré-leitor 1' THEN 1 END) > 0 THEN 'Pré-leitor 1'
+                  ELSE 'Sem Classificação'
               END AS student_results_user_rating
             FROM dataset_lia.student_results AS student_results
             WHERE student_results.exam_uuid = '891ad89f-3a1f-4f3b-a745-aaec6247b334'
