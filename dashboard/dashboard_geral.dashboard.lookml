@@ -1,3 +1,4 @@
+---
 - dashboard: dashboard_geral
   title: Dashboard Geral
   layout: newspaper
@@ -59,7 +60,6 @@
       Município: user_rating_dimension.student_results_school_county
       Escola: user_rating_dimension.student_results_school_name
       Turma: user_rating_dimension.student_results_class_name
-      Nome da Prova: user_rating_dimension.student_results_exam_name
     row: 0
     col: 8
     width: 16
@@ -153,7 +153,6 @@
       Município: user_rating_dimension.student_results_school_county
       Escola: user_rating_dimension.student_results_school_name
       Turma: user_rating_dimension.student_results_class_name
-      Nome da Prova: user_rating_dimension.student_results_exam_name
     row: 8
     col: 12
     width: 12
@@ -190,7 +189,6 @@
       Município: user_rating_dimension.student_results_school_county
       Escola: user_rating_dimension.student_results_school_name
       Turma: user_rating_dimension.student_results_class_name
-      Nome da Prova: user_rating_dimension.student_results_exam_name
     row: 0
     col: 0
     width: 8
@@ -278,7 +276,6 @@
       Município: user_rating_dimension.student_results_school_county
       Escola: user_rating_dimension.student_results_school_name
       Turma: user_rating_dimension.student_results_class_name
-      Nome da Prova: user_rating_dimension.student_results_exam_name
     row: 8
     col: 0
     width: 12
@@ -336,7 +333,6 @@
       Município: user_rating_dimension.student_results_school_county
       Escola: user_rating_dimension.student_results_school_name
       Turma: user_rating_dimension.student_results_class_name
-      Nome da Prova: user_rating_dimension.student_results_exam_name
     row: 18
     col: 0
     width: 12
@@ -428,7 +424,6 @@
       Município: user_rating_dimension.student_results_school_county
       Escola: user_rating_dimension.student_results_school_name
       Turma: user_rating_dimension.student_results_class_name
-      Nome da Prova: user_rating_dimension.student_results_exam_name
     row: 18
     col: 12
     width: 12
@@ -519,7 +514,6 @@
       Município: user_rating_dimension.student_results_school_county
       Escola: user_rating_dimension.student_results_school_name
       Turma: user_rating_dimension.student_results_class_name
-      Nome da Prova: user_rating_dimension.student_results_exam_name
     row: 42
     col: 0
     width: 24
@@ -613,7 +607,6 @@
       Município: user_rating_dimension.student_results_school_county
       Escola: user_rating_dimension.student_results_school_name
       Turma: user_rating_dimension.student_results_class_name
-      Nome da Prova: user_rating_dimension.student_results_exam_name
     row: 33
     col: 0
     width: 24
@@ -694,7 +687,6 @@
       Escola: user_rating_dimension.student_results_school_name
       Município: user_rating_dimension.student_results_school_county
       Região: user_rating_dimension.student_results_school_region
-      Nome da Prova: user_rating_dimension.student_results_exam_name
     row: 52
     col: 0
     width: 24
@@ -730,7 +722,6 @@
       Município: user_rating_dimension.student_results_school_county
       Escola: user_rating_dimension.student_results_school_name
       Turma: user_rating_dimension.student_results_class_name
-      Nome da Prova: user_rating_dimension.student_results_exam_name
     row: 4
     col: 0
     width: 4
@@ -773,7 +764,6 @@
       Município: user_rating_dimension.student_results_school_county
       Escola: user_rating_dimension.student_results_school_name
       Turma: user_rating_dimension.student_results_class_name
-      Nome da Prova: user_rating_dimension.student_results_exam_name
     row: 4
     col: 4
     width: 4
@@ -861,7 +851,6 @@
       Município: user_rating_dimension.student_results_school_county
       Escola: user_rating_dimension.student_results_school_name
       Turma: user_rating_dimension.student_results_class_name
-      Nome da Prova: user_rating_dimension.student_results_exam_name
     row: 24
     col: 0
     width: 24
@@ -874,11 +863,11 @@
     allow_multiple_values: true
     required: false
     ui_config:
-      type: checkboxes
+      type: tag_list
       display: popover
     model: lia_poc
     explore: user_rating_dimension
-    listens_to_filters: []
+    listens_to_filters: [Município, Escola, Turma]
     field: user_rating_dimension.student_results_school_region
   - name: Município
     title: Município
@@ -887,11 +876,11 @@
     allow_multiple_values: true
     required: false
     ui_config:
-      type: checkboxes
+      type: tag_list
       display: popover
     model: lia_poc
     explore: user_rating_dimension
-    listens_to_filters: []
+    listens_to_filters: [Região, Escola, Turma]
     field: user_rating_dimension.student_results_school_county
   - name: Escola
     title: Escola
@@ -904,7 +893,7 @@
       display: popover
     model: lia_poc
     explore: user_rating_dimension
-    listens_to_filters: []
+    listens_to_filters: [Região, Município, Turma]
     field: user_rating_dimension.student_results_school_name
   - name: Turma
     title: Turma
@@ -913,22 +902,9 @@
     allow_multiple_values: true
     required: false
     ui_config:
-      type: checkboxes
+      type: tag_list
       display: popover
     model: lia_poc
     explore: user_rating_dimension
-    listens_to_filters: []
+    listens_to_filters: [Região, Município, Escola]
     field: user_rating_dimension.student_results_class_name
-  - name: Nome da Prova
-    title: Nome da Prova
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: checkboxes
-      display: popover
-    model: lia_poc
-    explore: user_rating_dimension
-    listens_to_filters: []
-    field: user_rating_dimension.student_results_exam_name
