@@ -11,11 +11,11 @@
   - title: Testes realizados por dia
     name: Testes realizados por dia
     model: lia_poc
-    explore: user_rating_dimension
+    explore: results_finished
     type: looker_column
-    fields: [user_rating_dimension.student_results_response_timestamp_date, user_rating_dimension.total_provas_feitas]
-    fill_fields: [user_rating_dimension.student_results_response_timestamp_date]
-    sorts: [user_rating_dimension.student_results_response_timestamp_date desc]
+    fields: [results_finished.response_timestamp_date, results_finished.total_provas_feitas]
+    fill_fields: [results_finished.response_timestamp_date]
+    sorts: [results_finished.response_timestamp_date desc]
     limit: 5000
     column_limit: 50
     x_axis_gridlines: false
@@ -49,17 +49,17 @@
     x_axis_zoom: true
     y_axis_zoom: true
     series_colors:
-      user_rating_dimension.total_provas_feitas: "#2463eb"
+      results_finished.total_provas_feitas: "#2463eb"
     series_labels:
-      user_rating_dimension.total_provas_feitas: Provas
+      results_finished.total_provas_feitas: Provas
     show_null_points: true
     interpolation: linear
     defaults_version: 1
     listen:
-      Região: user_rating_dimension.student_results_school_region
-      Município: user_rating_dimension.student_results_school_county
-      Escola: user_rating_dimension.student_results_school_name
-      Turma: user_rating_dimension.student_results_class_name
+      Região: results_finished.school_region
+      Município: results_finished.school_county
+      Escola: results_finished.school_name
+      Turma: results_finished.class_name
     row: 0
     col: 8
     width: 16
@@ -67,11 +67,11 @@
   - title: Testes por Turma
     name: Testes por Turma
     model: lia_poc
-    explore: user_rating_dimension
+    explore: results_finished
     type: looker_grid
-    fields: [user_rating_dimension.student_results_school_name, user_rating_dimension.student_results_class_name,
-      user_rating_dimension.total_provas_feitas]
-    sorts: [user_rating_dimension.student_results_school_name, user_rating_dimension.student_results_class_name]
+    fields: [results_finished.school_name, results_finished.class_name,
+      results_finished.total_provas_feitas]
+    sorts: [results_finished.school_name, results_finished.class_name]
     limit: 5000
     column_limit: 50
     show_view_names: false
@@ -95,14 +95,14 @@
     truncate_header: false
     minimum_column_width: 75
     series_labels:
-      user_rating_dimension.student_results_school_name: Escola
-      user_rating_dimension.student_results_class_name: Turma
-      user_rating_dimension.total_provas_feitas: Provas
+      results_finished.school_name: Escola
+      results_finished.class_name: Turma
+      results_finished.total_provas_feitas: Provas
     series_column_widths:
-      user_rating_dimension.student_results_school_name: 275
-      user_rating_dimension.student_results_class_name: 300
+      results_finished.school_name: 275
+      results_finished.class_name: 300
     series_cell_visualizations:
-      user_rating_dimension.total_provas_feitas:
+      results_finished.total_provas_feitas:
         is_active: true
         palette:
           palette_id: 264f665b-6c7c-d1a5-3414-72fc06cc9ebd
@@ -111,7 +111,7 @@
           - "#f7fbff"
           - "#2463eb"
     series_text_format:
-      user_rating_dimension.student_results_school_name:
+      results_finished.school_name:
         bold: true
     x_axis_gridlines: false
     y_axis_gridlines: true
@@ -149,10 +149,10 @@
     showLegend: true
     hidden_fields:
     listen:
-      Região: user_rating_dimension.student_results_school_region
-      Município: user_rating_dimension.student_results_school_county
-      Escola: user_rating_dimension.student_results_school_name
-      Turma: user_rating_dimension.student_results_class_name
+      Região: results_finished.school_region
+      Município: results_finished.school_county
+      Escola: results_finished.school_name
+      Turma: results_finished.class_name
     row: 8
     col: 12
     width: 12
@@ -160,11 +160,11 @@
   - title: Testes Realizados
     name: Testes Realizados
     model: lia_poc
-    explore: user_rating_dimension
+    explore: results_finished
     type: single_value
-    fields: [user_rating_dimension.total_provas_feitas]
+    fields: [results_finished.total_provas_feitas]
     filters:
-      user_rating_dimension.student_results_user_rating: "-Sem Classificação"
+      results_finished.user_rating: "-Sem Classificação"
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -185,10 +185,10 @@
         strikethrough: false, fields: !!null ''}]
     defaults_version: 1
     listen:
-      Região: user_rating_dimension.student_results_school_region
-      Município: user_rating_dimension.student_results_school_county
-      Escola: user_rating_dimension.student_results_school_name
-      Turma: user_rating_dimension.student_results_class_name
+      Região: results_finished.school_region
+      Município: results_finished.school_county
+      Escola: results_finished.school_name
+      Turma: results_finished.class_name
     row: 0
     col: 0
     width: 8
@@ -196,10 +196,10 @@
   - title: Testes por Escola
     name: Testes por Escola
     model: lia_poc
-    explore: user_rating_dimension
+    explore: results_finished
     type: looker_grid
-    fields: [user_rating_dimension.student_results_school_name, user_rating_dimension.total_provas_feitas]
-    sorts: [user_rating_dimension.total_provas_feitas desc 0]
+    fields: [results_finished.school_name, results_finished.total_provas_feitas]
+    sorts: [results_finished.total_provas_feitas desc 0]
     limit: 5000
     column_limit: 50
     show_view_names: false
@@ -223,10 +223,10 @@
     truncate_header: false
     minimum_column_width: 75
     series_labels:
-      user_rating_dimension.student_results_school_name: Escola
-      user_rating_dimension.total_provas_feitas: Provas
+      results_finished.school_name: Escola
+      results_finished.total_provas_feitas: Provas
     series_cell_visualizations:
-      user_rating_dimension.total_provas_feitas:
+      results_finished.total_provas_feitas:
         is_active: true
         palette:
           palette_id: a304237e-b882-db01-93a5-fd1029247004
@@ -235,7 +235,7 @@
           - "#f7fbff"
           - "#2463eb"
     series_text_format:
-      user_rating_dimension.student_results_school_name:
+      results_finished.school_name:
         bold: true
     x_axis_gridlines: false
     y_axis_gridlines: true
@@ -272,10 +272,10 @@
     labelSize: 10pt
     showLegend: true
     listen:
-      Região: user_rating_dimension.student_results_school_region
-      Município: user_rating_dimension.student_results_school_county
-      Escola: user_rating_dimension.student_results_school_name
-      Turma: user_rating_dimension.student_results_class_name
+      Região: results_finished.school_region
+      Município: results_finished.school_county
+      Escola: results_finished.school_name
+      Turma: results_finished.class_name
     row: 8
     col: 0
     width: 12
@@ -283,12 +283,12 @@
   - title: Classificação dos Alunos
     name: Classificação dos Alunos
     model: lia_poc
-    explore: user_rating_dimension
+    explore: results_finished
     type: looker_pie
-    fields: [user_rating_dimension.total_provas_feitas, user_rating_dimension.student_results_user_rating]
+    fields: [results_finished.total_provas_feitas, results_finished.user_rating]
     filters:
-      user_rating_dimension.student_results_user_rating: "-Sem Classificação"
-    sorts: [user_rating_dimension.total_provas_feitas desc]
+      results_finished.user_rating: "-Sem Classificação"
+    sorts: [results_finished.total_provas_feitas desc]
     limit: 500
     column_limit: 50
     value_labels: labels
@@ -329,10 +329,10 @@
     totals_color: "#808080"
     defaults_version: 1
     listen:
-      Região: user_rating_dimension.student_results_school_region
-      Município: user_rating_dimension.student_results_school_county
-      Escola: user_rating_dimension.student_results_school_name
-      Turma: user_rating_dimension.student_results_class_name
+      Região: results_finished.school_region
+      Município: results_finished.school_county
+      Escola: results_finished.school_name
+      Turma: results_finished.class_name
     row: 18
     col: 0
     width: 12
@@ -340,10 +340,10 @@
   - title: Classificação dos Alunos
     name: Classificação dos Alunos (2)
     model: lia_poc
-    explore: user_rating_dimension
+    explore: results_finished
     type: looker_grid
-    fields: [user_rating_dimension.total_provas_feitas, user_rating_dimension.student_results_user_rating]
-    sorts: [user_rating_dimension.total_provas_feitas desc 0]
+    fields: [results_finished.total_provas_feitas, results_finished.user_rating]
+    sorts: [results_finished.total_provas_feitas desc 0]
     limit: 500
     column_limit: 50
     show_view_names: false
@@ -362,19 +362,19 @@
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     show_sql_query_menu_options: false
-    column_order: ["$$$_row_numbers_$$$", user_rating_dimension.student_results_user_rating,
-      user_rating_dimension.total_provas_feitas]
+    column_order: ["$$$_row_numbers_$$$", results_finished.user_rating,
+      results_finished.total_provas_feitas]
     show_totals: true
     show_row_totals: true
     truncate_header: false
     minimum_column_width: 75
     series_labels:
-      user_rating_dimension.student_results_user_rating: Classificação
-      user_rating_dimension.total_provas_feitas: Provas
+      results_finished.user_rating: Classificação
+      results_finished.total_provas_feitas: Provas
     series_column_widths:
-      user_rating_dimension.student_results_user_rating: 180
+      results_finished.user_rating: 180
     series_cell_visualizations:
-      user_rating_dimension.total_provas_feitas:
+      results_finished.total_provas_feitas:
         is_active: true
         palette:
           palette_id: 475bf0aa-7b3e-c88d-bb09-d50eadee74db
@@ -383,7 +383,7 @@
           - "#f7fbff"
           - "#2463eb"
     series_text_format:
-      user_rating_dimension.student_results_user_rating:
+      results_finished.user_rating:
         bold: true
     value_labels: legend
     label_type: labPer
@@ -420,10 +420,10 @@
     defaults_version: 1
     show_null_points: true
     listen:
-      Região: user_rating_dimension.student_results_school_region
-      Município: user_rating_dimension.student_results_school_county
-      Escola: user_rating_dimension.student_results_school_name
-      Turma: user_rating_dimension.student_results_class_name
+      Região: results_finished.school_region
+      Município: results_finished.school_county
+      Escola: results_finished.school_name
+      Turma: results_finished.class_name
     row: 18
     col: 12
     width: 12
@@ -431,14 +431,14 @@
   - title: Resultados por Escola
     name: Resultados por Escola
     model: lia_poc
-    explore: user_rating_dimension
+    explore: results_finished
     type: looker_grid
-    fields: [user_rating_dimension.student_results_school_name, user_rating_dimension.student_results_user_rating,
-      user_rating_dimension.total_provas_feitas]
-    pivots: [user_rating_dimension.student_results_user_rating]
+    fields: [results_finished.school_name, results_finished.user_rating,
+      results_finished.total_provas_feitas]
+    pivots: [results_finished.user_rating]
     filters:
-      user_rating_dimension.student_results_user_rating: "-Sem Classificação"
-    sorts: [user_rating_dimension.student_results_user_rating, user_rating_dimension.student_results_school_name]
+      results_finished.user_rating: "-Sem Classificação"
+    sorts: [results_finished.user_rating, results_finished.school_name]
     limit: 500
     column_limit: 50
     show_view_names: false
@@ -462,13 +462,13 @@
     truncate_header: false
     minimum_column_width: 75
     series_labels:
-      user_rating_dimension.student_results_school_name: Escola
-      user_rating_dimension.student_results_user_rating: Classificação
-      user_rating_dimension.total_provas_feitas: Provas
+      results_finished.school_name: Escola
+      results_finished.user_rating: Classificação
+      results_finished.total_provas_feitas: Provas
     series_column_widths:
-      user_rating_dimension.student_results_school_name: 280
+      results_finished.school_name: 280
     series_cell_visualizations:
-      user_rating_dimension.total_provas_feitas:
+      results_finished.total_provas_feitas:
         is_active: true
         palette:
           palette_id: de7b1d5a-c6be-faea-9ac9-6504d386191f
@@ -477,7 +477,7 @@
           - "#f7fbff"
           - "#2463eb"
     series_text_format:
-      user_rating_dimension.student_results_school_name:
+      results_finished.school_name:
         bold: true
     hidden_pivots:
       Leitor Fluente:
@@ -510,10 +510,10 @@
     defaults_version: 1
     hidden_fields:
     listen:
-      Região: user_rating_dimension.student_results_school_region
-      Município: user_rating_dimension.student_results_school_county
-      Escola: user_rating_dimension.student_results_school_name
-      Turma: user_rating_dimension.student_results_class_name
+      Região: results_finished.school_region
+      Município: results_finished.school_county
+      Escola: results_finished.school_name
+      Turma: results_finished.class_name
     row: 42
     col: 0
     width: 24
@@ -521,15 +521,15 @@
   - title: Resultados por Munícipio
     name: Resultados por Munícipio
     model: lia_poc
-    explore: user_rating_dimension
+    explore: results_finished
     type: looker_grid
-    fields: [user_rating_dimension.student_results_school_region, user_rating_dimension.student_results_school_county,
-      user_rating_dimension.total_provas_feitas, user_rating_dimension.student_results_user_rating]
-    pivots: [user_rating_dimension.student_results_user_rating]
+    fields: [results_finished.school_region, results_finished.school_county,
+      results_finished.total_provas_feitas, results_finished.user_rating]
+    pivots: [results_finished.user_rating]
     filters:
-      user_rating_dimension.student_results_user_rating: "-Sem Classificação"
-    sorts: [user_rating_dimension.student_results_user_rating, user_rating_dimension.student_results_school_region,
-      user_rating_dimension.student_results_school_county]
+      results_finished.user_rating: "-Sem Classificação"
+    sorts: [results_finished.user_rating, results_finished.school_region,
+      results_finished.school_county]
     limit: 5000
     column_limit: 50
     show_view_names: false
@@ -553,15 +553,15 @@
     truncate_header: false
     minimum_column_width: 75
     series_labels:
-      user_rating_dimension.total_provas_feitas: Provas
-      user_rating_dimension.student_results_school_county: Município
-      user_rating_dimension.student_results_school_region: Região
-      user_rating_dimension.student_results_user_rating: Classificação
+      results_finished.total_provas_feitas: Provas
+      results_finished.school_county: Município
+      results_finished.school_region: Região
+      results_finished.user_rating: Classificação
     series_column_widths:
-      user_rating_dimension.student_results_school_region: 200
-      user_rating_dimension.student_results_school_county: 180
+      results_finished.school_region: 200
+      results_finished.school_county: 180
     series_cell_visualizations:
-      user_rating_dimension.total_provas_feitas:
+      results_finished.total_provas_feitas:
         is_active: true
         palette:
           palette_id: 5dc362fa-5474-3a14-4ac7-1486b1812d5e
@@ -570,7 +570,7 @@
           - "#f7fbff"
           - "#2463eb"
     series_text_format:
-      user_rating_dimension.student_results_school_region:
+      results_finished.school_region:
         bold: true
     hidden_pivots:
       Leitor Fluente:
@@ -603,10 +603,10 @@
     defaults_version: 1
     hidden_fields:
     listen:
-      Região: user_rating_dimension.student_results_school_region
-      Município: user_rating_dimension.student_results_school_county
-      Escola: user_rating_dimension.student_results_school_name
-      Turma: user_rating_dimension.student_results_class_name
+      Região: results_finished.school_region
+      Município: results_finished.school_county
+      Escola: results_finished.school_name
+      Turma: results_finished.class_name
     row: 33
     col: 0
     width: 24
@@ -614,14 +614,14 @@
   - title: Resultados por Aluno
     name: Resultados por Aluno
     model: lia_poc
-    explore: user_rating_dimension
+    explore: results_finished
     type: looker_grid
-    fields: [user_rating_dimension.student_results_school_name, user_rating_dimension.student_results_class_name,
-      user_rating_dimension.student_results_exam_uuid, user_rating_dimension.student_results_student_name,
-      user_rating_dimension.student_results_exam_name, user_rating_dimension.student_results_student_uuid,
-      user_rating_dimension.student_results_user_rating]
-    sorts: [user_rating_dimension.student_results_school_name, user_rating_dimension.student_results_class_name,
-      user_rating_dimension.student_results_student_name, user_rating_dimension.student_results_exam_name]
+    fields: [results_finished.school_name, results_finished.class_name,
+      results_finished.exam_uuid, results_finished.student_name,
+      results_finished.exam_name, results_finished.student_uuid,
+      results_finished.user_rating]
+    sorts: [results_finished.school_name, results_finished.class_name,
+      results_finished.student_name, results_finished.exam_name]
     limit: 5000
     column_limit: 50
     show_view_names: false
@@ -645,15 +645,15 @@
     truncate_header: false
     minimum_column_width: 75
     series_labels:
-      user_rating_dimension.student_results_school_name: Escola
-      user_rating_dimension.student_results_class_name: Turma
-      user_rating_dimension.student_results_student_name: Aluno
-      user_rating_dimension.student_results_exam_name: Avaliação
-      user_rating_dimension.student_results_user_rating: Classificação
+      results_finished.school_name: Escola
+      results_finished.class_name: Turma
+      results_finished.student_name: Aluno
+      results_finished.exam_name: Avaliação
+      results_finished.user_rating: Classificação
     series_text_format:
-      user_rating_dimension.student_results_school_name:
+      results_finished.school_name:
         bold: true
-      user_rating_dimension.student_results_class_name:
+      results_finished.class_name:
         bold: true
     x_axis_gridlines: false
     y_axis_gridlines: true
@@ -681,12 +681,12 @@
     show_silhouette: false
     totals_color: "#808080"
     defaults_version: 1
-    hidden_fields: [user_rating_dimension.student_results_exam_uuid, user_rating_dimension.student_results_student_uuid]
+    hidden_fields: [results_finished.exam_uuid, results_finished.student_uuid]
     listen:
-      Turma: user_rating_dimension.student_results_class_name
-      Escola: user_rating_dimension.student_results_school_name
-      Município: user_rating_dimension.student_results_school_county
-      Região: user_rating_dimension.student_results_school_region
+      Turma: results_finished.class_name
+      Escola: results_finished.school_name
+      Município: results_finished.school_county
+      Região: results_finished.school_region
     row: 52
     col: 0
     width: 24
@@ -694,9 +694,9 @@
   - title: Escolas
     name: Escolas
     model: lia_poc
-    explore: user_rating_dimension
+    explore: results_finished
     type: single_value
-    fields: [user_rating_dimension.total_escolas]
+    fields: [results_finished.total_escolas]
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -718,10 +718,10 @@
     defaults_version: 1
     hidden_pivots: {}
     listen:
-      Região: user_rating_dimension.student_results_school_region
-      Município: user_rating_dimension.student_results_school_county
-      Escola: user_rating_dimension.student_results_school_name
-      Turma: user_rating_dimension.student_results_class_name
+      Região: results_finished.school_region
+      Município: results_finished.school_county
+      Escola: results_finished.school_name
+      Turma: results_finished.class_name
     row: 4
     col: 0
     width: 4
@@ -729,9 +729,9 @@
   - title: Turmas
     name: Turmas
     model: lia_poc
-    explore: user_rating_dimension
+    explore: results_finished
     type: single_value
-    fields: [user_rating_dimension.total_turmas]
+    fields: [results_finished.total_turmas]
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -760,10 +760,10 @@
     limit_displayed_rows: false
     defaults_version: 1
     listen:
-      Região: user_rating_dimension.student_results_school_region
-      Município: user_rating_dimension.student_results_school_county
-      Escola: user_rating_dimension.student_results_school_name
-      Turma: user_rating_dimension.student_results_class_name
+      Região: results_finished.school_region
+      Município: results_finished.school_county
+      Escola: results_finished.school_name
+      Turma: results_finished.class_name
     row: 4
     col: 4
     width: 4
@@ -771,14 +771,14 @@
   - title: Resultados por Região
     name: Resultados por Região
     model: lia_poc
-    explore: user_rating_dimension
+    explore: results_finished
     type: looker_grid
-    fields: [user_rating_dimension.student_results_school_region, user_rating_dimension.student_results_user_rating,
-      user_rating_dimension.total_provas_feitas]
-    pivots: [user_rating_dimension.student_results_user_rating]
+    fields: [results_finished.school_region, results_finished.user_rating,
+      results_finished.total_provas_feitas]
+    pivots: [results_finished.user_rating]
     filters:
-      user_rating_dimension.student_results_user_rating: "-Sem Classificação"
-    sorts: [user_rating_dimension.student_results_user_rating, user_rating_dimension.student_results_school_region]
+      results_finished.user_rating: "-Sem Classificação"
+    sorts: [results_finished.user_rating, results_finished.school_region]
     limit: 5000
     column_limit: 50
     show_view_names: false
@@ -802,13 +802,13 @@
     truncate_header: false
     minimum_column_width: 75
     series_labels:
-      user_rating_dimension.student_results_school_region: Região
-      user_rating_dimension.total_provas_feitas: Provas
-      user_rating_dimension.student_results_user_rating: Classificação
+      results_finished.school_region: Região
+      results_finished.total_provas_feitas: Provas
+      results_finished.user_rating: Classificação
     series_column_widths:
-      user_rating_dimension.student_results_school_region: 200
+      results_finished.school_region: 200
     series_cell_visualizations:
-      user_rating_dimension.total_provas_feitas:
+      results_finished.total_provas_feitas:
         is_active: true
         palette:
           palette_id: d2953692-c6d0-9529-d66a-53848352b127
@@ -817,7 +817,7 @@
           - "#f7fbff"
           - "#2463eb"
     series_text_format:
-      user_rating_dimension.student_results_school_region:
+      results_finished.school_region:
         bold: true
     hidden_pivots: {}
     x_axis_gridlines: false
@@ -847,10 +847,10 @@
     totals_color: "#808080"
     defaults_version: 1
     listen:
-      Região: user_rating_dimension.student_results_school_region
-      Município: user_rating_dimension.student_results_school_county
-      Escola: user_rating_dimension.student_results_school_name
-      Turma: user_rating_dimension.student_results_class_name
+      Região: results_finished.school_region
+      Município: results_finished.school_county
+      Escola: results_finished.school_name
+      Turma: results_finished.class_name
     row: 24
     col: 0
     width: 24
@@ -866,9 +866,9 @@
       type: tag_list
       display: popover
     model: lia_poc
-    explore: user_rating_dimension
+    explore: results_finished
     listens_to_filters: [Município, Escola, Turma]
-    field: user_rating_dimension.student_results_school_region
+    field: results_finished.school_region
   - name: Município
     title: Município
     type: field_filter
@@ -879,9 +879,9 @@
       type: tag_list
       display: popover
     model: lia_poc
-    explore: user_rating_dimension
+    explore: results_finished
     listens_to_filters: [Região, Escola, Turma]
-    field: user_rating_dimension.student_results_school_county
+    field: results_finished.school_county
   - name: Escola
     title: Escola
     type: field_filter
@@ -892,9 +892,9 @@
       type: tag_list
       display: popover
     model: lia_poc
-    explore: user_rating_dimension
+    explore: results_finished
     listens_to_filters: [Região, Município, Turma]
-    field: user_rating_dimension.student_results_school_name
+    field: results_finished.school_name
   - name: Turma
     title: Turma
     type: field_filter
@@ -905,6 +905,6 @@
       type: tag_list
       display: popover
     model: lia_poc
-    explore: user_rating_dimension
+    explore: results_finished
     listens_to_filters: [Região, Município, Escola]
-    field: user_rating_dimension.student_results_class_name
+    field: results_finished.class_name
