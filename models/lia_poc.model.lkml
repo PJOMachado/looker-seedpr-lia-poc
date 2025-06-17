@@ -81,7 +81,8 @@ explore: vw_resultados {
   ("{{ _user_attributes['region']}}" = "null" or ${school_region} = "{{ _user_attributes['region']}}");;
 
     always_filter: {
-      filters: [exam_uuid: "891ad89f-3a1f-4f3b-a745-aaec6247b334"]
+      filters: [exam_uuid: "891ad89f-3a1f-4f3b-a745-aaec6247b334",
+                prova_status: "FINISHED"]
     }
 
     # join: student_results_finished__response_words {
