@@ -16,6 +16,12 @@ view: vw_resultados {
     sql: ${TABLE}.CIDADE_ESCOLA ;;
   }
 
+  dimension: prova_status {
+    type: string
+    sql: ${TABLE}.PROVA_STATUS ;;
+  }
+
+
   dimension: classificacao {
     type: string
     sql: ${TABLE}.CLASSIFICACAO ;;
