@@ -11,9 +11,19 @@ view: vw_resultados {
     # A dimension is a groupable field that can be used to filter query results.
     # This dimension will be called "Cidade Escola" in Explore.
 
-  dimension: cidade_escola {
+  dimension: school_region {
     type: string
     sql: ${TABLE}.CIDADE_ESCOLA ;;
+  }
+
+  dimension: school_city {
+    type: string
+    sql: ${TABLE}.REGIAO_ESCOLA ;;
+  }
+
+  dimension: student_uuid {
+    type: string
+    sql: ${TABLE}.ID_ALUNO ;;
   }
 
   dimension: prova_status {
@@ -21,70 +31,80 @@ view: vw_resultados {
     sql: ${TABLE}.PROVA_STATUS ;;
   }
 
-
-  dimension: classificacao {
+  dimension: user_rating {
     type: string
     sql: ${TABLE}.CLASSIFICACAO ;;
   }
 
-  dimension: estado_escola {
+  dimension: school_state {
     type: string
     sql: ${TABLE}.ESTADO_ESCOLA ;;
   }
 
-  dimension: id_exame {
+  dimension: exam_uuid {
     type: string
     sql: ${TABLE}.ID_EXAME ;;
   }
 
-  dimension: id_organizacao {
+  dimension: school_uuid {
     type: string
     sql: ${TABLE}.ID_ORGANIZACAO ;;
   }
 
-  dimension: id_turma {
+  dimension: class_uuid {
     type: string
     sql: ${TABLE}.ID_TURMA ;;
   }
 
-  dimension: municipio_escola {
+  dimension: school_county {
     type: string
     sql: ${TABLE}.MUNICIPIO_ESCOLA ;;
   }
 
-  dimension: nome_aluno {
+  dimension: student_name {
     type: string
     sql: ${TABLE}.NOME_ALUNO ;;
   }
 
-  dimension: nome_escola {
+  dimension: school_name {
     type: string
     sql: ${TABLE}.NOME_ESCOLA ;;
   }
 
-  dimension: nome_exame {
+  dimension: exam_name {
     type: string
     sql: ${TABLE}.NOME_EXAME ;;
   }
 
-  dimension: nome_turma {
+  dimension: class_name {
     type: string
     sql: ${TABLE}.NOME_TURMA ;;
-  }
-
-  dimension: regiao_escola {
-    type: string
-    sql: ${TABLE}.REGIAO_ESCOLA ;;
   }
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
-  dimension_group: updated {
+  dimension_group: response_timestamp {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.UPDATED ;;
   }
+
   measure: count {
     type: count
+  }
+
+  measure: total_provas_feitas {
+    type: count_distinct
+    sql: CONCAT(${student_uuid}, ${exam_uuid}) ;;
+  }
+
+  measure: total_escolas {
+    type: count_distinct
+    sql: ${school_uuid} ;;
+  }
+
+  measure: total_turmas {
+    type: count_distinct
+    sql: CONCAT(${school_uuid}, ${class_uuid}) ;;
   }
 }

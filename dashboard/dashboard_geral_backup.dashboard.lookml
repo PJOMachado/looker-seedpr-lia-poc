@@ -1,6 +1,6 @@
 ---
-- dashboard: dashboard_geral
-  title: Dashboard Geral
+- dashboard: dashboard_geral_backup
+  title: Dashboard Geral (backup)
   layout: newspaper
   preferred_viewer: dashboards-next
   crossfilter_enabled: true
@@ -11,11 +11,11 @@
   - title: Testes realizados por dia
     name: Testes realizados por dia
     model: lia_poc
-    explore: vw_resultados
+    explore: results_finished
     type: looker_column
-    fields: [vw_resultados.response_timestamp_date, vw_resultados.total_provas_feitas]
-    fill_fields: [vw_resultados.response_timestamp_date]
-    sorts: [vw_resultados.response_timestamp_date desc]
+    fields: [results_finished.response_timestamp_date, results_finished.total_provas_feitas]
+    fill_fields: [results_finished.response_timestamp_date]
+    sorts: [results_finished.response_timestamp_date desc]
     limit: 5000
     column_limit: 50
     x_axis_gridlines: false
@@ -49,17 +49,17 @@
     x_axis_zoom: true
     y_axis_zoom: true
     series_colors:
-      vw_resultados.total_provas_feitas: "#2463eb"
+      results_finished.total_provas_feitas: "#2463eb"
     series_labels:
-      vw_resultados.total_provas_feitas: Provas
+      results_finished.total_provas_feitas: Provas
     show_null_points: true
     interpolation: linear
     defaults_version: 1
     listen:
-      Região: vw_resultados.school_region
-      Município: vw_resultados.school_county
-      Escola: vw_resultados.school_name
-      Turma: vw_resultados.class_name
+      Região: results_finished.school_region
+      Município: results_finished.school_county
+      Escola: results_finished.school_name
+      Turma: results_finished.class_name
     row: 0
     col: 8
     width: 16
@@ -67,11 +67,11 @@
   - title: Testes por Turma
     name: Testes por Turma
     model: lia_poc
-    explore: vw_resultados
+    explore: results_finished
     type: looker_grid
-    fields: [vw_resultados.school_name, vw_resultados.class_name,
-      vw_resultados.total_provas_feitas]
-    sorts: [vw_resultados.school_name, vw_resultados.class_name]
+    fields: [results_finished.school_name, results_finished.class_name,
+      results_finished.total_provas_feitas]
+    sorts: [results_finished.school_name, results_finished.class_name]
     limit: 5000
     column_limit: 50
     show_view_names: false
@@ -95,14 +95,14 @@
     truncate_header: false
     minimum_column_width: 75
     series_labels:
-      vw_resultados.school_name: Escola
-      vw_resultados.class_name: Turma
-      vw_resultados.total_provas_feitas: Provas
+      results_finished.school_name: Escola
+      results_finished.class_name: Turma
+      results_finished.total_provas_feitas: Provas
     series_column_widths:
-      vw_resultados.school_name: 275
-      vw_resultados.class_name: 300
+      results_finished.school_name: 275
+      results_finished.class_name: 300
     series_cell_visualizations:
-      vw_resultados.total_provas_feitas:
+      results_finished.total_provas_feitas:
         is_active: true
         palette:
           palette_id: 264f665b-6c7c-d1a5-3414-72fc06cc9ebd
@@ -111,7 +111,7 @@
           - "#f7fbff"
           - "#2463eb"
     series_text_format:
-      vw_resultados.school_name:
+      results_finished.school_name:
         bold: true
     x_axis_gridlines: false
     y_axis_gridlines: true
@@ -149,10 +149,10 @@
     showLegend: true
     hidden_fields:
     listen:
-      Região: vw_resultados.school_region
-      Município: vw_resultados.school_county
-      Escola: vw_resultados.school_name
-      Turma: vw_resultados.class_name
+      Região: results_finished.school_region
+      Município: results_finished.school_county
+      Escola: results_finished.school_name
+      Turma: results_finished.class_name
     row: 8
     col: 12
     width: 12
@@ -160,11 +160,11 @@
   - title: Testes Realizados
     name: Testes Realizados
     model: lia_poc
-    explore: vw_resultados
+    explore: results_finished
     type: single_value
-    fields: [vw_resultados.total_provas_feitas]
+    fields: [results_finished.total_provas_feitas]
     filters:
-      vw_resultados.user_rating: "-Sem Classificação"
+      results_finished.user_rating: "-Sem Classificação"
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -185,10 +185,10 @@
         strikethrough: false, fields: !!null ''}]
     defaults_version: 1
     listen:
-      Região: vw_resultados.school_region
-      Município: vw_resultados.school_county
-      Escola: vw_resultados.school_name
-      Turma: vw_resultados.class_name
+      Região: results_finished.school_region
+      Município: results_finished.school_county
+      Escola: results_finished.school_name
+      Turma: results_finished.class_name
     row: 0
     col: 0
     width: 8
@@ -196,10 +196,10 @@
   - title: Testes por Escola
     name: Testes por Escola
     model: lia_poc
-    explore: vw_resultados
+    explore: results_finished
     type: looker_grid
-    fields: [vw_resultados.school_name, vw_resultados.total_provas_feitas]
-    sorts: [vw_resultados.total_provas_feitas desc 0]
+    fields: [results_finished.school_name, results_finished.total_provas_feitas]
+    sorts: [results_finished.total_provas_feitas desc 0]
     limit: 5000
     column_limit: 50
     show_view_names: false
@@ -223,10 +223,10 @@
     truncate_header: false
     minimum_column_width: 75
     series_labels:
-      vw_resultados.school_name: Escola
-      vw_resultados.total_provas_feitas: Provas
+      results_finished.school_name: Escola
+      results_finished.total_provas_feitas: Provas
     series_cell_visualizations:
-      vw_resultados.total_provas_feitas:
+      results_finished.total_provas_feitas:
         is_active: true
         palette:
           palette_id: a304237e-b882-db01-93a5-fd1029247004
@@ -235,7 +235,7 @@
           - "#f7fbff"
           - "#2463eb"
     series_text_format:
-      vw_resultados.school_name:
+      results_finished.school_name:
         bold: true
     x_axis_gridlines: false
     y_axis_gridlines: true
@@ -272,10 +272,10 @@
     labelSize: 10pt
     showLegend: true
     listen:
-      Região: vw_resultados.school_region
-      Município: vw_resultados.school_county
-      Escola: vw_resultados.school_name
-      Turma: vw_resultados.class_name
+      Região: results_finished.school_region
+      Município: results_finished.school_county
+      Escola: results_finished.school_name
+      Turma: results_finished.class_name
     row: 8
     col: 0
     width: 12
@@ -283,12 +283,12 @@
   - title: Classificação dos Alunos
     name: Classificação dos Alunos
     model: lia_poc
-    explore: vw_resultados
+    explore: results_finished
     type: looker_pie
-    fields: [vw_resultados.total_provas_feitas, vw_resultados.user_rating]
+    fields: [results_finished.total_provas_feitas, results_finished.user_rating]
     filters:
-      vw_resultados.user_rating: "-Sem Classificação"
-    sorts: [vw_resultados.total_provas_feitas desc]
+      results_finished.user_rating: "-Sem Classificação"
+    sorts: [results_finished.total_provas_feitas desc]
     limit: 500
     column_limit: 50
     value_labels: labels
@@ -329,10 +329,10 @@
     totals_color: "#808080"
     defaults_version: 1
     listen:
-      Região: vw_resultados.school_region
-      Município: vw_resultados.school_county
-      Escola: vw_resultados.school_name
-      Turma: vw_resultados.class_name
+      Região: results_finished.school_region
+      Município: results_finished.school_county
+      Escola: results_finished.school_name
+      Turma: results_finished.class_name
     row: 18
     col: 0
     width: 12
@@ -340,10 +340,10 @@
   - title: Classificação dos Alunos
     name: Classificação dos Alunos (2)
     model: lia_poc
-    explore: vw_resultados
+    explore: results_finished
     type: looker_grid
-    fields: [vw_resultados.total_provas_feitas, vw_resultados.user_rating]
-    sorts: [vw_resultados.total_provas_feitas desc 0]
+    fields: [results_finished.total_provas_feitas, results_finished.user_rating]
+    sorts: [results_finished.total_provas_feitas desc 0]
     limit: 500
     column_limit: 50
     show_view_names: false
@@ -362,19 +362,19 @@
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     show_sql_query_menu_options: false
-    column_order: ["$$$_row_numbers_$$$", vw_resultados.user_rating,
-      vw_resultados.total_provas_feitas]
+    column_order: ["$$$_row_numbers_$$$", results_finished.user_rating,
+      results_finished.total_provas_feitas]
     show_totals: true
     show_row_totals: true
     truncate_header: false
     minimum_column_width: 75
     series_labels:
-      vw_resultados.user_rating: Classificação
-      vw_resultados.total_provas_feitas: Provas
+      results_finished.user_rating: Classificação
+      results_finished.total_provas_feitas: Provas
     series_column_widths:
-      vw_resultados.user_rating: 180
+      results_finished.user_rating: 180
     series_cell_visualizations:
-      vw_resultados.total_provas_feitas:
+      results_finished.total_provas_feitas:
         is_active: true
         palette:
           palette_id: 475bf0aa-7b3e-c88d-bb09-d50eadee74db
@@ -383,7 +383,7 @@
           - "#f7fbff"
           - "#2463eb"
     series_text_format:
-      vw_resultados.user_rating:
+      results_finished.user_rating:
         bold: true
     value_labels: legend
     label_type: labPer
@@ -420,10 +420,10 @@
     defaults_version: 1
     show_null_points: true
     listen:
-      Região: vw_resultados.school_region
-      Município: vw_resultados.school_county
-      Escola: vw_resultados.school_name
-      Turma: vw_resultados.class_name
+      Região: results_finished.school_region
+      Município: results_finished.school_county
+      Escola: results_finished.school_name
+      Turma: results_finished.class_name
     row: 18
     col: 12
     width: 12
@@ -431,14 +431,14 @@
   - title: Resultados por Escola
     name: Resultados por Escola
     model: lia_poc
-    explore: vw_resultados
+    explore: results_finished
     type: looker_grid
-    fields: [vw_resultados.school_name, vw_resultados.user_rating,
-      vw_resultados.total_provas_feitas]
-    pivots: [vw_resultados.user_rating]
+    fields: [results_finished.school_name, results_finished.user_rating,
+      results_finished.total_provas_feitas]
+    pivots: [results_finished.user_rating]
     filters:
-      vw_resultados.user_rating: "-Sem Classificação"
-    sorts: [vw_resultados.user_rating, vw_resultados.school_name]
+      results_finished.user_rating: "-Sem Classificação"
+    sorts: [results_finished.user_rating, results_finished.school_name]
     limit: 500
     column_limit: 50
     show_view_names: false
@@ -462,13 +462,13 @@
     truncate_header: false
     minimum_column_width: 75
     series_labels:
-      vw_resultados.school_name: Escola
-      vw_resultados.user_rating: Classificação
-      vw_resultados.total_provas_feitas: Provas
+      results_finished.school_name: Escola
+      results_finished.user_rating: Classificação
+      results_finished.total_provas_feitas: Provas
     series_column_widths:
-      vw_resultados.school_name: 280
+      results_finished.school_name: 280
     series_cell_visualizations:
-      vw_resultados.total_provas_feitas:
+      results_finished.total_provas_feitas:
         is_active: true
         palette:
           palette_id: de7b1d5a-c6be-faea-9ac9-6504d386191f
@@ -477,7 +477,7 @@
           - "#f7fbff"
           - "#2463eb"
     series_text_format:
-      vw_resultados.school_name:
+      results_finished.school_name:
         bold: true
     hidden_pivots:
       Leitor Fluente:
@@ -510,10 +510,10 @@
     defaults_version: 1
     hidden_fields:
     listen:
-      Região: vw_resultados.school_region
-      Município: vw_resultados.school_county
-      Escola: vw_resultados.school_name
-      Turma: vw_resultados.class_name
+      Região: results_finished.school_region
+      Município: results_finished.school_county
+      Escola: results_finished.school_name
+      Turma: results_finished.class_name
     row: 42
     col: 0
     width: 24
@@ -521,15 +521,15 @@
   - title: Resultados por Munícipio
     name: Resultados por Munícipio
     model: lia_poc
-    explore: vw_resultados
+    explore: results_finished
     type: looker_grid
-    fields: [vw_resultados.school_region, vw_resultados.school_county,
-      vw_resultados.total_provas_feitas, vw_resultados.user_rating]
-    pivots: [vw_resultados.user_rating]
+    fields: [results_finished.school_region, results_finished.school_county,
+      results_finished.total_provas_feitas, results_finished.user_rating]
+    pivots: [results_finished.user_rating]
     filters:
-      vw_resultados.user_rating: "-Sem Classificação"
-    sorts: [vw_resultados.user_rating, vw_resultados.school_region,
-      vw_resultados.school_county]
+      results_finished.user_rating: "-Sem Classificação"
+    sorts: [results_finished.user_rating, results_finished.school_region,
+      results_finished.school_county]
     limit: 5000
     column_limit: 50
     show_view_names: false
@@ -553,15 +553,15 @@
     truncate_header: false
     minimum_column_width: 75
     series_labels:
-      vw_resultados.total_provas_feitas: Provas
-      vw_resultados.school_county: Município
-      vw_resultados.school_region: Região
-      vw_resultados.user_rating: Classificação
+      results_finished.total_provas_feitas: Provas
+      results_finished.school_county: Município
+      results_finished.school_region: Região
+      results_finished.user_rating: Classificação
     series_column_widths:
-      vw_resultados.school_region: 200
-      vw_resultados.school_county: 180
+      results_finished.school_region: 200
+      results_finished.school_county: 180
     series_cell_visualizations:
-      vw_resultados.total_provas_feitas:
+      results_finished.total_provas_feitas:
         is_active: true
         palette:
           palette_id: 5dc362fa-5474-3a14-4ac7-1486b1812d5e
@@ -570,7 +570,7 @@
           - "#f7fbff"
           - "#2463eb"
     series_text_format:
-      vw_resultados.school_region:
+      results_finished.school_region:
         bold: true
     hidden_pivots:
       Leitor Fluente:
@@ -603,10 +603,10 @@
     defaults_version: 1
     hidden_fields:
     listen:
-      Região: vw_resultados.school_region
-      Município: vw_resultados.school_county
-      Escola: vw_resultados.school_name
-      Turma: vw_resultados.class_name
+      Região: results_finished.school_region
+      Município: results_finished.school_county
+      Escola: results_finished.school_name
+      Turma: results_finished.class_name
     row: 33
     col: 0
     width: 24
@@ -614,14 +614,14 @@
   - title: Resultados por Aluno
     name: Resultados por Aluno
     model: lia_poc
-    explore: vw_resultados
+    explore: results_finished
     type: looker_grid
-    fields: [vw_resultados.school_name, vw_resultados.class_name,
-      vw_resultados.exam_uuid, vw_resultados.student_name,
-      vw_resultados.exam_name, vw_resultados.student_uuid,
-      vw_resultados.user_rating]
-    sorts: [vw_resultados.school_name, vw_resultados.class_name,
-      vw_resultados.student_name, vw_resultados.exam_name]
+    fields: [results_finished.school_name, results_finished.class_name,
+      results_finished.exam_uuid, results_finished.student_name,
+      results_finished.exam_name, results_finished.student_uuid,
+      results_finished.user_rating]
+    sorts: [results_finished.school_name, results_finished.class_name,
+      results_finished.student_name, results_finished.exam_name]
     limit: 5000
     column_limit: 50
     show_view_names: false
@@ -645,15 +645,15 @@
     truncate_header: false
     minimum_column_width: 75
     series_labels:
-      vw_resultados.school_name: Escola
-      vw_resultados.class_name: Turma
-      vw_resultados.student_name: Aluno
-      vw_resultados.exam_name: Avaliação
-      vw_resultados.user_rating: Classificação
+      results_finished.school_name: Escola
+      results_finished.class_name: Turma
+      results_finished.student_name: Aluno
+      results_finished.exam_name: Avaliação
+      results_finished.user_rating: Classificação
     series_text_format:
-      vw_resultados.school_name:
+      results_finished.school_name:
         bold: true
-      vw_resultados.class_name:
+      results_finished.class_name:
         bold: true
     x_axis_gridlines: false
     y_axis_gridlines: true
@@ -681,12 +681,12 @@
     show_silhouette: false
     totals_color: "#808080"
     defaults_version: 1
-    hidden_fields: [vw_resultados.exam_uuid, vw_resultados.student_uuid]
+    hidden_fields: [results_finished.exam_uuid, results_finished.student_uuid]
     listen:
-      Turma: vw_resultados.class_name
-      Escola: vw_resultados.school_name
-      Município: vw_resultados.school_county
-      Região: vw_resultados.school_region
+      Turma: results_finished.class_name
+      Escola: results_finished.school_name
+      Município: results_finished.school_county
+      Região: results_finished.school_region
     row: 52
     col: 0
     width: 24
@@ -694,9 +694,9 @@
   - title: Escolas
     name: Escolas
     model: lia_poc
-    explore: vw_resultados
+    explore: results_finished
     type: single_value
-    fields: [vw_resultados.total_escolas]
+    fields: [results_finished.total_escolas]
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -718,10 +718,10 @@
     defaults_version: 1
     hidden_pivots: {}
     listen:
-      Região: vw_resultados.school_region
-      Município: vw_resultados.school_county
-      Escola: vw_resultados.school_name
-      Turma: vw_resultados.class_name
+      Região: results_finished.school_region
+      Município: results_finished.school_county
+      Escola: results_finished.school_name
+      Turma: results_finished.class_name
     row: 4
     col: 0
     width: 4
@@ -729,9 +729,9 @@
   - title: Turmas
     name: Turmas
     model: lia_poc
-    explore: vw_resultados
+    explore: results_finished
     type: single_value
-    fields: [vw_resultados.total_turmas]
+    fields: [results_finished.total_turmas]
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -760,10 +760,10 @@
     limit_displayed_rows: false
     defaults_version: 1
     listen:
-      Região: vw_resultados.school_region
-      Município: vw_resultados.school_county
-      Escola: vw_resultados.school_name
-      Turma: vw_resultados.class_name
+      Região: results_finished.school_region
+      Município: results_finished.school_county
+      Escola: results_finished.school_name
+      Turma: results_finished.class_name
     row: 4
     col: 4
     width: 4
@@ -771,14 +771,14 @@
   - title: Resultados por Região
     name: Resultados por Região
     model: lia_poc
-    explore: vw_resultados
+    explore: results_finished
     type: looker_grid
-    fields: [vw_resultados.school_region, vw_resultados.user_rating,
-      vw_resultados.total_provas_feitas]
-    pivots: [vw_resultados.user_rating]
+    fields: [results_finished.school_region, results_finished.user_rating,
+      results_finished.total_provas_feitas]
+    pivots: [results_finished.user_rating]
     filters:
-      vw_resultados.user_rating: "-Sem Classificação"
-    sorts: [vw_resultados.user_rating, vw_resultados.school_region]
+      results_finished.user_rating: "-Sem Classificação"
+    sorts: [results_finished.user_rating, results_finished.school_region]
     limit: 5000
     column_limit: 50
     show_view_names: false
@@ -802,13 +802,13 @@
     truncate_header: false
     minimum_column_width: 75
     series_labels:
-      vw_resultados.school_region: Região
-      vw_resultados.total_provas_feitas: Provas
-      vw_resultados.user_rating: Classificação
+      results_finished.school_region: Região
+      results_finished.total_provas_feitas: Provas
+      results_finished.user_rating: Classificação
     series_column_widths:
-      vw_resultados.school_region: 200
+      results_finished.school_region: 200
     series_cell_visualizations:
-      vw_resultados.total_provas_feitas:
+      results_finished.total_provas_feitas:
         is_active: true
         palette:
           palette_id: d2953692-c6d0-9529-d66a-53848352b127
@@ -817,7 +817,7 @@
           - "#f7fbff"
           - "#2463eb"
     series_text_format:
-      vw_resultados.school_region:
+      results_finished.school_region:
         bold: true
     hidden_pivots: {}
     x_axis_gridlines: false
@@ -847,10 +847,10 @@
     totals_color: "#808080"
     defaults_version: 1
     listen:
-      Região: vw_resultados.school_region
-      Município: vw_resultados.school_county
-      Escola: vw_resultados.school_name
-      Turma: vw_resultados.class_name
+      Região: results_finished.school_region
+      Município: results_finished.school_county
+      Escola: results_finished.school_name
+      Turma: results_finished.class_name
     row: 24
     col: 0
     width: 24
@@ -866,9 +866,9 @@
       type: tag_list
       display: popover
     model: lia_poc
-    explore: vw_resultados
+    explore: results_finished
     listens_to_filters: [Município, Escola, Turma]
-    field: vw_resultados.school_region
+    field: results_finished.school_region
   - name: Município
     title: Município
     type: field_filter
@@ -879,9 +879,9 @@
       type: tag_list
       display: popover
     model: lia_poc
-    explore: vw_resultados
+    explore: results_finished
     listens_to_filters: [Região, Escola, Turma]
-    field: vw_resultados.school_county
+    field: results_finished.school_county
   - name: Escola
     title: Escola
     type: field_filter
@@ -892,9 +892,9 @@
       type: tag_list
       display: popover
     model: lia_poc
-    explore: vw_resultados
+    explore: results_finished
     listens_to_filters: [Região, Município, Turma]
-    field: vw_resultados.school_name
+    field: results_finished.school_name
   - name: Turma
     title: Turma
     type: field_filter
@@ -905,6 +905,6 @@
       type: tag_list
       display: popover
     model: lia_poc
-    explore: vw_resultados
+    explore: results_finished
     listens_to_filters: [Região, Município, Escola]
-    field: vw_resultados.class_name
+    field: results_finished.class_name
