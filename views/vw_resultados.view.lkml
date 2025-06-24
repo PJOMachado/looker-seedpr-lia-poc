@@ -13,12 +13,14 @@ view: vw_resultados {
 
   dimension: school_region {
     type: string
-    sql: ${TABLE}.CIDADE_ESCOLA ;;
+    # sql: ${TABLE}.CIDADE_ESCOLA ;;
+    sql: ${TABLE}.REGIAO_ESCOLA ;;
   }
 
   dimension: school_city {
     type: string
-    sql: ${TABLE}.REGIAO_ESCOLA ;;
+    # sql: ${TABLE}.REGIAO_ESCOLA ;;
+    sql: ${TABLE}.CIDADE_ESCOLA ;;
   }
 
   dimension: student_uuid {
