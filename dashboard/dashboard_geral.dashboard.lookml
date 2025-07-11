@@ -6,7 +6,7 @@
   crossfilter_enabled: true
   description: ''
   refresh: 15 seconds
-  preferred_slug: NgzeTtBYT7AGL6IyAFmX5y
+  preferred_slug: 1dh0st8tk0Lp58HoP8SYdu
   elements:
   - title: Testes realizados por dia
     name: Testes realizados por dia
@@ -69,8 +69,7 @@
     model: lia_poc
     explore: vw_resultados
     type: looker_grid
-    fields: [vw_resultados.school_name, vw_resultados.class_name,
-      vw_resultados.total_provas_feitas]
+    fields: [vw_resultados.school_name, vw_resultados.class_name, vw_resultados.total_provas_feitas]
     sorts: [vw_resultados.school_name, vw_resultados.class_name]
     limit: 5000
     column_limit: 50
@@ -288,7 +287,9 @@
     fields: [vw_resultados.total_provas_feitas, vw_resultados.user_rating]
     filters:
       vw_resultados.user_rating: "-Sem Classificação"
-    sorts: [vw_resultados.total_provas_feitas desc]
+      vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
+      vw_resultados.prova_status: FINISHED
+    sorts: [vw_resultados.user_rating]
     limit: 500
     column_limit: 50
     value_labels: labels
@@ -300,6 +301,12 @@
       Pré-leitor 4: "#ff2d6b"
       Pré-leitor 3: "#3e77a2"
       Pré-leitor 2: "#2463eb"
+      "     Leitor Iniciante 2": "#1A73E8"
+      "       Pré-leitor 3": "#3e77a2"
+      "      Leitor Iniciante 1": "#E52592"
+      "    Fluente": "#fd5400"
+      "        Pré-leitor 2": "#7CB342"
+      "         Pré-leitor 1": "#F9AB00"
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_view_names: false
@@ -343,7 +350,10 @@
     explore: vw_resultados
     type: looker_grid
     fields: [vw_resultados.total_provas_feitas, vw_resultados.user_rating]
-    sorts: [vw_resultados.total_provas_feitas desc 0]
+    filters:
+      vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
+      vw_resultados.prova_status: FINISHED
+    sorts: [vw_resultados.user_rating]
     limit: 500
     column_limit: 50
     show_view_names: false
@@ -362,8 +372,7 @@
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     show_sql_query_menu_options: false
-    column_order: ["$$$_row_numbers_$$$", vw_resultados.user_rating,
-      vw_resultados.total_provas_feitas]
+    column_order: ["$$$_row_numbers_$$$", vw_resultados.user_rating, vw_resultados.total_provas_feitas]
     show_totals: true
     show_row_totals: true
     truncate_header: false
@@ -433,8 +442,7 @@
     model: lia_poc
     explore: vw_resultados
     type: looker_grid
-    fields: [vw_resultados.school_name, vw_resultados.user_rating,
-      vw_resultados.total_provas_feitas]
+    fields: [vw_resultados.school_name, vw_resultados.user_rating, vw_resultados.total_provas_feitas]
     pivots: [vw_resultados.user_rating]
     filters:
       vw_resultados.user_rating: "-Sem Classificação"
@@ -523,13 +531,12 @@
     model: lia_poc
     explore: vw_resultados
     type: looker_grid
-    fields: [vw_resultados.school_region, vw_resultados.school_county,
-      vw_resultados.total_provas_feitas, vw_resultados.user_rating]
+    fields: [vw_resultados.school_region, vw_resultados.school_county, vw_resultados.total_provas_feitas,
+      vw_resultados.user_rating]
     pivots: [vw_resultados.user_rating]
     filters:
       vw_resultados.user_rating: "-Sem Classificação"
-    sorts: [vw_resultados.user_rating, vw_resultados.school_region,
-      vw_resultados.school_county]
+    sorts: [vw_resultados.user_rating, vw_resultados.school_region, vw_resultados.school_county]
     limit: 5000
     column_limit: 50
     show_view_names: false
@@ -616,12 +623,11 @@
     model: lia_poc
     explore: vw_resultados
     type: looker_grid
-    fields: [vw_resultados.school_name, vw_resultados.class_name,
-      vw_resultados.exam_uuid, vw_resultados.student_name,
-      vw_resultados.exam_name, vw_resultados.student_uuid,
+    fields: [vw_resultados.school_name, vw_resultados.class_name, vw_resultados.exam_uuid,
+      vw_resultados.student_name, vw_resultados.exam_name, vw_resultados.student_uuid,
       vw_resultados.user_rating]
-    sorts: [vw_resultados.school_name, vw_resultados.class_name,
-      vw_resultados.student_name, vw_resultados.exam_name]
+    sorts: [vw_resultados.school_name, vw_resultados.class_name, vw_resultados.student_name,
+      vw_resultados.exam_name]
     limit: 5000
     column_limit: 50
     show_view_names: false
@@ -773,8 +779,7 @@
     model: lia_poc
     explore: vw_resultados
     type: looker_grid
-    fields: [vw_resultados.school_region, vw_resultados.user_rating,
-      vw_resultados.total_provas_feitas]
+    fields: [vw_resultados.school_region, vw_resultados.user_rating, vw_resultados.total_provas_feitas]
     pivots: [vw_resultados.user_rating]
     filters:
       vw_resultados.user_rating: "-Sem Classificação"

@@ -46,6 +46,22 @@ view: user_rating_dimension {
     sql: ${TABLE}.student_results_user_rating ;;
   }
 
+  dimension: student_results_user_rating_ordered {
+    label: "Student Results User Rating (Ordered)"
+    type: string
+    sql:
+      CASE
+        WHEN ${student_results_user_rating} = "Pré-leitor 1" THEN "         Pré-leitor 1"
+        WHEN ${student_results_user_rating} = "Pré-leitor 2" THEN "        Pré-leitor 2"
+        WHEN ${student_results_user_rating} = "Pré-leitor 3" THEN "       Pré-leitor 3"
+        WHEN ${student_results_user_rating} = "Leitor Iniciante 1" THEN "      Leitor Iniciante 1"
+        WHEN ${student_results_user_rating} = "Leitor Iniciante 2" THEN "     Leitor Iniciante 2"
+        WHEN ${student_results_user_rating} = "Leitor Fluente" THEN "    Leitor Fluente"
+        WHEN ${student_results_user_rating} = "Sem Classificação" THEN "   Sem Classificação"
+        ELSE ${student_results_user_rating}
+      END ;;
+  }
+
   dimension: student_results_class_name {
     type: string
     sql: ${TABLE}.student_results_class_name ;;
