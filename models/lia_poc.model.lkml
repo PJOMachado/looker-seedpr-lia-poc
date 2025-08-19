@@ -66,7 +66,8 @@ explore: results_finished {
 
 
 explore: vw_resultados {
-  hidden: yes
+  hidden: no
+  label: "     Explore Geral"
   sql_always_where:
 
   (array_length(({{ _user_attributes['group_ids']}})) = 0 or ${class_uuid} in unnest(({{ _user_attributes['group_ids']}})))
@@ -78,7 +79,10 @@ explore: vw_resultados {
   ("{{ _user_attributes['county']}}" = "null" or ${school_county} = "{{ _user_attributes['county']}}")
       and
 
-  ("{{ _user_attributes['region']}}" = "null" or ${school_region} = "{{ _user_attributes['region']}}");;
+  ("{{ _user_attributes['region']}}" = "null" or ${school_region} = "{{ _user_attributes['region']}}")
+      and
+
+  TRIM(${school_name}) != "ESCOLA RADHARK" ;;
 
     always_filter: {
       filters: [exam_uuid: "891ad89f-3a1f-4f3b-a745-aaec6247b334",
