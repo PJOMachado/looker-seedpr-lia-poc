@@ -74,7 +74,6 @@
     fields: [vw_resultados.school_name, vw_resultados.class_name, vw_resultados.total_provas_feitas]
     filters:
       vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
-      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.school_name, vw_resultados.class_name]
     limit: 5000
     column_limit: 50
@@ -206,7 +205,6 @@
     fields: [vw_resultados.school_name, vw_resultados.total_provas_feitas]
     filters:
       vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
-      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.total_provas_feitas desc 0]
     limit: 5000
     column_limit: 50
@@ -297,7 +295,6 @@
     filters:
       vw_resultados.user_rating: "-Sem Classificação"
       vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
-      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating]
     limit: 500
     column_limit: 50
@@ -361,7 +358,6 @@
     fields: [vw_resultados.total_provas_feitas, vw_resultados.user_rating]
     filters:
       vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
-      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating]
     limit: 5000
     column_limit: 50
@@ -457,7 +453,6 @@
     filters:
       vw_resultados.user_rating: "-Sem Classificação"
       vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
-      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating, vw_resultados.school_region, vw_resultados.school_name]
     limit: 5000
     column_limit: 50
@@ -553,7 +548,6 @@
     filters:
       vw_resultados.user_rating: "-Sem Classificação"
       vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
-      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating, vw_resultados.school_region, vw_resultados.school_county]
     limit: 5000
     column_limit: 50
@@ -646,7 +640,6 @@
       vw_resultados.student_uuid, vw_resultados.user_rating]
     filters:
       vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
-      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.school_region, vw_resultados.school_name, vw_resultados.class_name,
       vw_resultados.student_name, vw_resultados.exam_name]
     limit: 5000
@@ -814,7 +807,6 @@
     filters:
       vw_resultados.user_rating: "-Sem Classificação"
       vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
-      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating, vw_resultados.school_region]
     limit: 5000
     column_limit: 50

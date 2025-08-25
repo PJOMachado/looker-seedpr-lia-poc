@@ -70,8 +70,6 @@
     explore: vw_resultados
     type: looker_grid
     fields: [vw_resultados.school_name, vw_resultados.class_name, vw_resultados.total_provas_feitas]
-    filters:
-      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.school_name, vw_resultados.class_name]
     limit: 5000
     column_limit: 50
@@ -200,8 +198,6 @@
     explore: vw_resultados
     type: looker_grid
     fields: [vw_resultados.school_name, vw_resultados.total_provas_feitas]
-    filters:
-      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.total_provas_feitas desc 0]
     limit: 5000
     column_limit: 50
@@ -291,8 +287,6 @@
     fields: [vw_resultados.total_provas_feitas, vw_resultados.user_rating]
     filters:
       vw_resultados.user_rating: "-Sem Classificação"
-      vw_resultados.exam_uuid: c8cd6273-20e2-4a8f-9a82-d17a78bfb981
-      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating]
     limit: 500
     column_limit: 50
@@ -354,9 +348,6 @@
     explore: vw_resultados
     type: looker_grid
     fields: [vw_resultados.total_provas_feitas, vw_resultados.user_rating]
-    filters:
-      vw_resultados.exam_uuid: c8cd6273-20e2-4a8f-9a82-d17a78bfb981
-      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating]
     limit: 5000
     column_limit: 50
@@ -451,7 +442,6 @@
     pivots: [vw_resultados.user_rating]
     filters:
       vw_resultados.user_rating: "-Sem Classificação"
-      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating, vw_resultados.school_region, vw_resultados.school_name]
     limit: 5000
     column_limit: 50
@@ -546,7 +536,6 @@
     pivots: [vw_resultados.user_rating]
     filters:
       vw_resultados.user_rating: "-Sem Classificação"
-      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating, vw_resultados.school_region, vw_resultados.school_county]
     limit: 5000
     column_limit: 50
@@ -637,8 +626,6 @@
     fields: [vw_resultados.school_region, vw_resultados.school_name, vw_resultados.class_name,
       vw_resultados.exam_uuid, vw_resultados.student_name, vw_resultados.exam_name,
       vw_resultados.student_uuid, vw_resultados.user_rating]
-    filters:
-      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.school_region, vw_resultados.school_name, vw_resultados.class_name,
       vw_resultados.student_name, vw_resultados.exam_name]
     limit: 5000
@@ -801,7 +788,6 @@
     pivots: [vw_resultados.user_rating]
     filters:
       vw_resultados.user_rating: "-Sem Classificação"
-      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating, vw_resultados.school_region]
     limit: 5000
     column_limit: 50
