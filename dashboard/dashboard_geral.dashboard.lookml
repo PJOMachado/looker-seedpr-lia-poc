@@ -287,7 +287,7 @@
     fields: [vw_resultados.total_provas_feitas, vw_resultados.user_rating]
     filters:
       vw_resultados.user_rating: "-Sem Classificação"
-      vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
+      vw_resultados.exam_uuid: c8cd6273-20e2-4a8f-9a82-d17a78bfb981
       vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating]
     limit: 500
@@ -351,7 +351,7 @@
     type: looker_grid
     fields: [vw_resultados.total_provas_feitas, vw_resultados.user_rating]
     filters:
-      vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
+      vw_resultados.exam_uuid: c8cd6273-20e2-4a8f-9a82-d17a78bfb981
       vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating]
     limit: 500
