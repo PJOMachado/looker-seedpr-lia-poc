@@ -2,7 +2,8 @@ connection: "lia_bq_poc_table"
 
 # include all the views
 include: "/views/**/*.view"
-include: "/dashboard/*.dashboard"
+include: "/dashboard/dashboard_geral.dashboard.lookml"
+include: "/dashboard/dashboard_geral_v01.dashboard.lookml"
 
 datagroup: lia_poc_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -85,7 +86,7 @@ explore: vw_resultados {
   TRIM(${school_name}) != "ESCOLA RADHARK" ;;
 
     always_filter: {
-      filters: [exam_uuid: "891ad89f-3a1f-4f3b-a745-aaec6247b334",
+      filters: [exam_uuid: "c8cd6273-20e2-4a8f-9a82-d17a78bfb981",
                 prova_status: "FINISHED"]
     }
 

@@ -1,12 +1,12 @@
 ---
-- dashboard: dashboard_geral
-  title: Dashboard Geral
+- dashboard: dashboard_geral_v01
+  title: Dashboard Geral [v-01]
   layout: newspaper
   preferred_viewer: dashboards-next
   crossfilter_enabled: true
   description: ''
   refresh: 15 seconds
-  preferred_slug: hLA6dA4LzvR2dBqONWMbGA
+  preferred_slug: A1YtwJUuw5HxOHSh8WZHf8
   elements:
   - title: Testes realizados por dia
     name: Testes realizados por dia
@@ -14,6 +14,8 @@
     explore: vw_resultados
     type: looker_column
     fields: [vw_resultados.response_timestamp_date, vw_resultados.total_provas_feitas]
+    filters:
+      vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
     fill_fields: [vw_resultados.response_timestamp_date]
     sorts: [vw_resultados.response_timestamp_date desc]
     limit: 5000
@@ -60,7 +62,7 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
-    row: 0
+    row: 3
     col: 8
     width: 16
     height: 8
@@ -71,6 +73,7 @@
     type: looker_grid
     fields: [vw_resultados.school_name, vw_resultados.class_name, vw_resultados.total_provas_feitas]
     filters:
+      vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
       vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.school_name, vw_resultados.class_name]
     limit: 5000
@@ -154,7 +157,7 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
-    row: 8
+    row: 11
     col: 12
     width: 12
     height: 10
@@ -165,6 +168,7 @@
     type: single_value
     fields: [vw_resultados.total_provas_feitas]
     filters:
+      vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
       vw_resultados.user_rating: "-Sem Classificação"
     limit: 500
     column_limit: 50
@@ -190,7 +194,7 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
-    row: 0
+    row: 3
     col: 0
     width: 8
     height: 4
@@ -201,6 +205,7 @@
     type: looker_grid
     fields: [vw_resultados.school_name, vw_resultados.total_provas_feitas]
     filters:
+      vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
       vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.total_provas_feitas desc 0]
     limit: 5000
@@ -279,7 +284,7 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
-    row: 8
+    row: 11
     col: 0
     width: 12
     height: 10
@@ -291,7 +296,7 @@
     fields: [vw_resultados.total_provas_feitas, vw_resultados.user_rating]
     filters:
       vw_resultados.user_rating: "-Sem Classificação"
-      vw_resultados.exam_uuid: c8cd6273-20e2-4a8f-9a82-d17a78bfb981
+      vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
       vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating]
     limit: 500
@@ -344,7 +349,7 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
-    row: 18
+    row: 21
     col: 0
     width: 12
     height: 6
@@ -355,7 +360,7 @@
     type: looker_grid
     fields: [vw_resultados.total_provas_feitas, vw_resultados.user_rating]
     filters:
-      vw_resultados.exam_uuid: c8cd6273-20e2-4a8f-9a82-d17a78bfb981
+      vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
       vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating]
     limit: 5000
@@ -437,7 +442,7 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
-    row: 18
+    row: 21
     col: 12
     width: 12
     height: 6
@@ -451,6 +456,7 @@
     pivots: [vw_resultados.user_rating]
     filters:
       vw_resultados.user_rating: "-Sem Classificação"
+      vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
       vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating, vw_resultados.school_region, vw_resultados.school_name]
     limit: 5000
@@ -532,7 +538,7 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
-    row: 42
+    row: 45
     col: 0
     width: 24
     height: 10
@@ -546,6 +552,7 @@
     pivots: [vw_resultados.user_rating]
     filters:
       vw_resultados.user_rating: "-Sem Classificação"
+      vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
       vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating, vw_resultados.school_region, vw_resultados.school_county]
     limit: 5000
@@ -625,7 +632,7 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
-    row: 33
+    row: 36
     col: 0
     width: 24
     height: 9
@@ -638,6 +645,7 @@
       vw_resultados.exam_uuid, vw_resultados.student_name, vw_resultados.exam_name,
       vw_resultados.student_uuid, vw_resultados.user_rating]
     filters:
+      vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
       vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.school_region, vw_resultados.school_name, vw_resultados.class_name,
       vw_resultados.student_name, vw_resultados.exam_name]
@@ -711,7 +719,7 @@
       Escola: vw_resultados.school_name
       Município: vw_resultados.school_county
       Região: vw_resultados.school_region
-    row: 52
+    row: 55
     col: 0
     width: 24
     height: 17
@@ -721,6 +729,8 @@
     explore: vw_resultados
     type: single_value
     fields: [vw_resultados.total_escolas]
+    filters:
+      vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -746,7 +756,7 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
-    row: 4
+    row: 7
     col: 0
     width: 4
     height: 4
@@ -756,6 +766,8 @@
     explore: vw_resultados
     type: single_value
     fields: [vw_resultados.total_turmas]
+    filters:
+      vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -788,7 +800,7 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
-    row: 4
+    row: 7
     col: 4
     width: 4
     height: 4
@@ -801,6 +813,7 @@
     pivots: [vw_resultados.user_rating]
     filters:
       vw_resultados.user_rating: "-Sem Classificação"
+      vw_resultados.exam_uuid: 891ad89f-3a1f-4f3b-a745-aaec6247b334
       vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating, vw_resultados.school_region]
     limit: 5000
@@ -875,10 +888,24 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
-    row: 24
+    row: 27
     col: 0
     width: 24
     height: 9
+  - name: ''
+    type: text
+    title_text: ''
+    subtitle_text: ''
+    body_text: |
+      <div style="padding:12px 16px;border-radius:12px;background:#fff8e1;border:2px solid #f59e0b;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;text-align:center;line-height:1.4">
+        <strong style="letter-spacing:.2px">⚠️ Aviso:</strong>
+        <span>Informações referentes para o <code style="background:rgba(0,0,0,.06);padding:2px 6px;border-radius:6px">exam_uuid</code> =
+        <code style="background:rgba(0,0,0,.06);padding:2px 6px;border-radius:6px">891ad89f-3a1f-4f3b-a745-aaec6247b334</code></span>
+      </div>
+    row: 0
+    col: 0
+    width: 24
+    height: 3
   filters:
   - name: Região
     title: Região
