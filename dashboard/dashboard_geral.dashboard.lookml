@@ -6,7 +6,7 @@
   crossfilter_enabled: true
   description: ''
   refresh: 15 seconds
-  preferred_slug: hLA6dA4LzvR2dBqONWMbGA
+  preferred_slug: vYApd4OBk7OPHv7irr2bcU
   elements:
   - title: Testes realizados por dia
     name: Testes realizados por dia
@@ -60,6 +60,7 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
+      Prova: vw_resultados.exam_name
     row: 0
     col: 8
     width: 16
@@ -152,6 +153,7 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
+      Prova: vw_resultados.exam_name
     row: 8
     col: 12
     width: 12
@@ -163,7 +165,7 @@
     type: single_value
     fields: [vw_resultados.total_provas_feitas]
     filters:
-      vw_resultados.user_rating: "-Sem Classificação"
+      vw_resultados.prova_status: FINISHED
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -188,6 +190,7 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
+      Prova: vw_resultados.exam_name
     row: 0
     col: 0
     width: 8
@@ -275,6 +278,7 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
+      Prova: vw_resultados.exam_name
     row: 8
     col: 0
     width: 12
@@ -286,7 +290,7 @@
     type: looker_pie
     fields: [vw_resultados.total_provas_feitas, vw_resultados.user_rating]
     filters:
-      vw_resultados.user_rating: "-Sem Classificação"
+      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating]
     limit: 500
     column_limit: 50
@@ -338,6 +342,7 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
+      Prova: vw_resultados.exam_name
     row: 18
     col: 0
     width: 12
@@ -428,6 +433,7 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
+      Prova: vw_resultados.exam_name
     row: 18
     col: 12
     width: 12
@@ -441,7 +447,7 @@
       vw_resultados.user_rating]
     pivots: [vw_resultados.user_rating]
     filters:
-      vw_resultados.user_rating: "-Sem Classificação"
+      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating, vw_resultados.school_region, vw_resultados.school_name]
     limit: 5000
     column_limit: 50
@@ -522,6 +528,7 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
+      Prova: vw_resultados.exam_name
     row: 42
     col: 0
     width: 24
@@ -535,7 +542,7 @@
       vw_resultados.user_rating]
     pivots: [vw_resultados.user_rating]
     filters:
-      vw_resultados.user_rating: "-Sem Classificação"
+      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating, vw_resultados.school_region, vw_resultados.school_county]
     limit: 5000
     column_limit: 50
@@ -614,6 +621,7 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
+      Prova: vw_resultados.exam_name
     row: 33
     col: 0
     width: 24
@@ -698,6 +706,7 @@
       Escola: vw_resultados.school_name
       Município: vw_resultados.school_county
       Região: vw_resultados.school_region
+      Prova: vw_resultados.exam_name
     row: 52
     col: 0
     width: 24
@@ -733,6 +742,7 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
+      Prova: vw_resultados.exam_name
     row: 4
     col: 0
     width: 4
@@ -775,6 +785,7 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
+      Prova: vw_resultados.exam_name
     row: 4
     col: 4
     width: 4
@@ -787,7 +798,7 @@
     fields: [vw_resultados.school_region, vw_resultados.user_rating, vw_resultados.total_provas_feitas]
     pivots: [vw_resultados.user_rating]
     filters:
-      vw_resultados.user_rating: "-Sem Classificação"
+      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating, vw_resultados.school_region]
     limit: 5000
     column_limit: 50
@@ -861,6 +872,7 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
+      Prova: vw_resultados.exam_name
     row: 24
     col: 0
     width: 24
@@ -918,3 +930,16 @@
     explore: vw_resultados
     listens_to_filters: [Região, Município, Escola]
     field: vw_resultados.class_name
+  - name: Prova
+    title: Prova
+    type: field_filter
+    default_value: Prova Aberta - 2º semestre
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: tag_list
+      display: popover
+    model: lia_poc
+    explore: vw_resultados
+    listens_to_filters: []
+    field: vw_resultados.exam_name

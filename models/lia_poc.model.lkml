@@ -86,9 +86,10 @@ explore: vw_resultados {
   TRIM(${school_name}) != "ESCOLA RADHARK" ;;
 
     always_filter: {
-      filters: [exam_uuid: "c8cd6273-20e2-4a8f-9a82-d17a78bfb981",
-                prova_status: "FINISHED"]
+      filters: [prova_status: "FINISHED"]
+      # exam_uuid: "c8cd6273-20e2-4a8f-9a82-d17a78bfb981"
     }
+
 
     # join: student_results_finished__response_words {
     #   view_label: "Student Results Finished: Response Words"
