@@ -6,7 +6,7 @@
   crossfilter_enabled: true
   description: ''
   refresh: 15 seconds
-  preferred_slug: vYApd4OBk7OPHv7irr2bcU
+  preferred_slug: c3PE3MEsxPeZMF3UpubW6i
   elements:
   - title: Testes realizados por dia
     name: Testes realizados por dia
@@ -15,6 +15,8 @@
     type: looker_column
     fields: [vw_resultados.response_timestamp_date, vw_resultados.total_provas_feitas]
     fill_fields: [vw_resultados.response_timestamp_date]
+    filters:
+      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.response_timestamp_date desc]
     limit: 5000
     column_limit: 50
@@ -51,7 +53,7 @@
     series_colors:
       vw_resultados.total_provas_feitas: "#2463eb"
     series_labels:
-      vw_resultados.total_provas_feitas: Provas
+      vw_resultados.total_provas_feitas: Testes
     show_null_points: true
     interpolation: linear
     defaults_version: 1
@@ -71,6 +73,8 @@
     explore: vw_resultados
     type: looker_grid
     fields: [vw_resultados.school_name, vw_resultados.class_name, vw_resultados.total_provas_feitas]
+    filters:
+      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.school_name, vw_resultados.class_name]
     limit: 5000
     column_limit: 50
@@ -97,7 +101,7 @@
     series_labels:
       vw_resultados.school_name: Escola
       vw_resultados.class_name: Turma
-      vw_resultados.total_provas_feitas: Provas
+      vw_resultados.total_provas_feitas: Testes
     series_column_widths:
       vw_resultados.school_name: 275
       vw_resultados.class_name: 300
@@ -201,6 +205,8 @@
     explore: vw_resultados
     type: looker_grid
     fields: [vw_resultados.school_name, vw_resultados.total_provas_feitas]
+    filters:
+      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.total_provas_feitas desc 0]
     limit: 5000
     column_limit: 50
@@ -226,7 +232,7 @@
     minimum_column_width: 75
     series_labels:
       vw_resultados.school_name: Escola
-      vw_resultados.total_provas_feitas: Provas
+      vw_resultados.total_provas_feitas: Testes
     series_cell_visualizations:
       vw_resultados.total_provas_feitas:
         is_active: true
@@ -303,12 +309,13 @@
       Pré-leitor 4: "#ff2d6b"
       Pré-leitor 3: "#3e77a2"
       Pré-leitor 2: "#2463eb"
-      "     Leitor Iniciante 2": "#1A73E8"
-      "       Pré-leitor 3": "#3e77a2"
-      "      Leitor Iniciante 1": "#E52592"
-      "    Fluente": "#fd5400"
-      "        Pré-leitor 2": "#7CB342"
-      "         Pré-leitor 1": "#F9AB00"
+      "     Leitor Iniciante 2": "#43A047"
+      "       Pré-leitor 3": "#F28B82"
+      "      Leitor Iniciante 1": "#C8E6C9"
+      "    Fluente": "#1B5E20"
+      "        Pré-leitor 2": "#E53935"
+      "         Pré-leitor 1": "#B71C1C"
+      "          Ausência Justificada": "#9E9E9E"
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_view_names: false
@@ -353,6 +360,8 @@
     explore: vw_resultados
     type: looker_grid
     fields: [vw_resultados.total_provas_feitas, vw_resultados.user_rating]
+    filters:
+      vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating]
     limit: 5000
     column_limit: 50
@@ -379,7 +388,7 @@
     minimum_column_width: 75
     series_labels:
       vw_resultados.user_rating: Classificação
-      vw_resultados.total_provas_feitas: Provas
+      vw_resultados.total_provas_feitas: Testes
     series_column_widths:
       vw_resultados.user_rating: 180
     series_cell_visualizations:
@@ -451,6 +460,8 @@
     sorts: [vw_resultados.user_rating, vw_resultados.school_region, vw_resultados.school_name]
     limit: 5000
     column_limit: 50
+    total: true
+    row_total: right
     show_view_names: false
     show_row_numbers: true
     transpose: false
@@ -474,7 +485,7 @@
     series_labels:
       vw_resultados.school_name: Escola
       vw_resultados.user_rating: Classificação
-      vw_resultados.total_provas_feitas: Provas
+      vw_resultados.total_provas_feitas: Testes
       vw_resultados.school_region: Região
     series_column_widths:
       vw_resultados.school_name: 280
@@ -546,6 +557,8 @@
     sorts: [vw_resultados.user_rating, vw_resultados.school_region, vw_resultados.school_county]
     limit: 5000
     column_limit: 50
+    total: true
+    row_total: right
     show_view_names: false
     show_row_numbers: true
     transpose: false
@@ -567,7 +580,7 @@
     truncate_header: false
     minimum_column_width: 75
     series_labels:
-      vw_resultados.total_provas_feitas: Provas
+      vw_resultados.total_provas_feitas: Testes
       vw_resultados.school_county: Município
       vw_resultados.school_region: Região
       vw_resultados.user_rating: Classificação
@@ -802,6 +815,8 @@
     sorts: [vw_resultados.user_rating, vw_resultados.school_region]
     limit: 5000
     column_limit: 50
+    total: true
+    row_total: right
     show_view_names: false
     show_row_numbers: true
     transpose: false
@@ -824,7 +839,7 @@
     minimum_column_width: 75
     series_labels:
       vw_resultados.school_region: Região
-      vw_resultados.total_provas_feitas: Provas
+      vw_resultados.total_provas_feitas: Testes
       vw_resultados.user_rating: Classificação
     series_column_widths:
       vw_resultados.school_region: 200
