@@ -6,7 +6,7 @@
   crossfilter_enabled: true
   description: ''
   refresh: 15 seconds
-  preferred_slug: c3PE3MEsxPeZMF3UpubW6i
+  preferred_slug: VQpc6RyTUMsweFYPnJBYFH
   elements:
   - title: Testes realizados por dia
     name: Testes realizados por dia
@@ -309,12 +309,12 @@
       Pré-leitor 4: "#ff2d6b"
       Pré-leitor 3: "#3e77a2"
       Pré-leitor 2: "#2463eb"
-      "     Leitor Iniciante 2": "#43A047"
-      "       Pré-leitor 3": "#F28B82"
-      "      Leitor Iniciante 1": "#C8E6C9"
+      "     Leitor Iniciante 2": "#73C05B"
+      "       Pré-leitor 3": "#FFA726"
+      "      Leitor Iniciante 1": "#73C05B"
       "    Fluente": "#1B5E20"
       "        Pré-leitor 2": "#E53935"
-      "         Pré-leitor 1": "#B71C1C"
+      "         Pré-leitor 1": "#E53935"
       "          Ausência Justificada": "#9E9E9E"
     x_axis_gridlines: false
     y_axis_gridlines: true
