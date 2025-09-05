@@ -6,7 +6,7 @@
   crossfilter_enabled: true
   description: ''
   refresh: 15 seconds
-  preferred_slug: VQpc6RyTUMsweFYPnJBYFH
+  preferred_slug: M53ATx4tGR08N1VDJl2YFF
   elements:
   - title: Testes realizados por dia
     name: Testes realizados por dia
@@ -63,6 +63,7 @@
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
       Prova: vw_resultados.exam_name
+      Classificação: vw_resultados.user_rating
     row: 0
     col: 8
     width: 16
@@ -158,6 +159,7 @@
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
       Prova: vw_resultados.exam_name
+      Classificação: vw_resultados.user_rating
     row: 8
     col: 12
     width: 12
@@ -195,6 +197,7 @@
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
       Prova: vw_resultados.exam_name
+      Classificação: vw_resultados.user_rating
     row: 0
     col: 0
     width: 8
@@ -285,6 +288,7 @@
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
       Prova: vw_resultados.exam_name
+      Classificação: vw_resultados.user_rating
     row: 8
     col: 0
     width: 12
@@ -350,6 +354,7 @@
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
       Prova: vw_resultados.exam_name
+      Classificação: vw_resultados.user_rating
     row: 18
     col: 0
     width: 12
@@ -358,14 +363,76 @@
     name: Classificação dos Alunos (2)
     model: lia_poc
     explore: vw_resultados
-    type: looker_grid
+    type: looker_column
     fields: [vw_resultados.total_provas_feitas, vw_resultados.user_rating]
+    pivots: [vw_resultados.user_rating]
     filters:
       vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.user_rating]
     limit: 5000
     column_limit: 50
+    x_axis_gridlines: false
+    y_axis_gridlines: true
     show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: false
+    show_x_axis_ticks: false
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    y_axes: [{label: '', orientation: left, series: [{axisId: vw_resultados.total_provas_feitas,
+            id: "          Ausência Justificada - vw_resultados.total_provas_feitas",
+            name: "          Ausência Justificada"}, {axisId: vw_resultados.total_provas_feitas,
+            id: "         Pré-leitor 1 - vw_resultados.total_provas_feitas", name: " \
+              \        Pré-leitor 1"}, {axisId: vw_resultados.total_provas_feitas,
+            id: "        Pré-leitor 2 - vw_resultados.total_provas_feitas", name: " \
+              \       Pré-leitor 2"}, {axisId: vw_resultados.total_provas_feitas,
+            id: "       Pré-leitor 3 - vw_resultados.total_provas_feitas", name: " \
+              \      Pré-leitor 3"}, {axisId: vw_resultados.total_provas_feitas, id: " \
+              \     Leitor Iniciante 1 - vw_resultados.total_provas_feitas", name: " \
+              \     Leitor Iniciante 1"}, {axisId: vw_resultados.total_provas_feitas,
+            id: "     Leitor Iniciante 2 - vw_resultados.total_provas_feitas", name: " \
+              \    Leitor Iniciante 2"}, {axisId: vw_resultados.total_provas_feitas,
+            id: "    Fluente - vw_resultados.total_provas_feitas", name: "    Fluente"}],
+        showLabels: false, showValues: true, unpinAxis: false, tickDensity: default,
+        tickDensityCustom: 5, type: linear}]
+    x_axis_zoom: true
+    y_axis_zoom: true
+    series_colors:
+      Leitor Fluente: "#7CB342"
+      Pré-leitor 1: "#EA4335"
+      Leitor Iniciante: "#12B5CB"
+      Pré-leitor 4: "#F9AB00"
+      "          Ausência Justificada - vw_resultados.total_provas_feitas": "#9E9E9E"
+      "         Pré-leitor 1 - vw_resultados.total_provas_feitas": "#E53935"
+      "        Pré-leitor 2 - vw_resultados.total_provas_feitas": "#E53935"
+      "       Pré-leitor 3 - vw_resultados.total_provas_feitas": "#FFA726"
+      "      Leitor Iniciante 1 - vw_resultados.total_provas_feitas": "#73C05B"
+      "     Leitor Iniciante 2 - vw_resultados.total_provas_feitas": "#73C05B"
+      "    Fluente - vw_resultados.total_provas_feitas": "#1B5E20"
+    series_labels:
+      vw_resultados.user_rating: Classificação
+      vw_resultados.total_provas_feitas: Testes
+    column_spacing_ratio: 0.2
+    column_group_spacing_ratio: 0
     show_row_numbers: true
     transpose: false
     truncate_text: true
@@ -373,7 +440,6 @@
     hide_row_totals: false
     size_to_fit: true
     table_theme: white
-    limit_displayed_rows: false
     enable_conditional_formatting: false
     header_text_alignment: left
     header_font_size: '12'
@@ -386,9 +452,6 @@
     show_row_totals: true
     truncate_header: false
     minimum_column_width: 75
-    series_labels:
-      vw_resultados.user_rating: Classificação
-      vw_resultados.total_provas_feitas: Testes
     series_column_widths:
       vw_resultados.user_rating: 180
     series_cell_visualizations:
@@ -405,44 +468,16 @@
         bold: true
     value_labels: legend
     label_type: labPer
-    series_colors:
-      Leitor Fluente: "#7CB342"
-      Pré-leitor 1: "#EA4335"
-      Leitor Iniciante: "#12B5CB"
-      Pré-leitor 4: "#F9AB00"
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    legend_position: center
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
     defaults_version: 1
     show_null_points: true
+    hidden_pivots: {}
     listen:
       Região: vw_resultados.school_region
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
       Prova: vw_resultados.exam_name
+      Classificação: vw_resultados.user_rating
     row: 18
     col: 12
     width: 12
@@ -540,6 +575,7 @@
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
       Prova: vw_resultados.exam_name
+      Classificação: vw_resultados.user_rating
     row: 42
     col: 0
     width: 24
@@ -635,6 +671,7 @@
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
       Prova: vw_resultados.exam_name
+      Classificação: vw_resultados.user_rating
     row: 33
     col: 0
     width: 24
@@ -720,6 +757,7 @@
       Município: vw_resultados.school_county
       Região: vw_resultados.school_region
       Prova: vw_resultados.exam_name
+      Classificação: vw_resultados.user_rating
     row: 52
     col: 0
     width: 24
@@ -756,6 +794,7 @@
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
       Prova: vw_resultados.exam_name
+      Classificação: vw_resultados.user_rating
     row: 4
     col: 0
     width: 4
@@ -799,6 +838,7 @@
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
       Prova: vw_resultados.exam_name
+      Classificação: vw_resultados.user_rating
     row: 4
     col: 4
     width: 4
@@ -888,6 +928,7 @@
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
       Prova: vw_resultados.exam_name
+      Classificação: vw_resultados.user_rating
     row: 24
     col: 0
     width: 24
@@ -945,6 +986,19 @@
     explore: vw_resultados
     listens_to_filters: [Região, Município, Escola]
     field: vw_resultados.class_name
+  - name: Classificação
+    title: Classificação
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: checkboxes
+      display: popover
+    model: lia_poc
+    explore: vw_resultados
+    listens_to_filters: []
+    field: vw_resultados.user_rating
   - name: Prova
     title: Prova
     type: field_filter
