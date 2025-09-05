@@ -37,13 +37,13 @@ view: vw_resultados {
     type: string
     sql:
       CASE
+        WHEN ${TABLE}.CLASSIFICACAO = "NO_RATING" THEN "          Ausência Justificada"
         WHEN ${TABLE}.CLASSIFICACAO = "PRE_READER_ONE" THEN "         Pré-leitor 1"
         WHEN ${TABLE}.CLASSIFICACAO = "PRE_READER_TWO" THEN "        Pré-leitor 2"
         WHEN ${TABLE}.CLASSIFICACAO = "PRE_READER_THREE" THEN "       Pré-leitor 3"
         WHEN ${TABLE}.CLASSIFICACAO = "READER" THEN "      Leitor Iniciante 1"
         WHEN ${TABLE}.CLASSIFICACAO = "READER_TWO" THEN "     Leitor Iniciante 2"
         WHEN ${TABLE}.CLASSIFICACAO = "FLUENT" THEN "    Fluente"
-        WHEN ${TABLE}.CLASSIFICACAO = "NO_RATING" THEN "   Ausência Justificada"
         ELSE "Outro"
       END ;;
   }
