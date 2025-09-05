@@ -29,6 +29,7 @@ view: vw_resultados {
   }
 
   dimension: prova_status {
+    label: "Teste Status"
     type: string
     sql: ${TABLE}.PROVA_STATUS ;;
   }
@@ -106,6 +107,7 @@ view: vw_resultados {
   }
 
   measure: total_provas_feitas {
+    label: "Total Testes Feitos"
     type: count_distinct
     sql: CONCAT(${student_uuid}, ${exam_uuid}) ;;
   }
