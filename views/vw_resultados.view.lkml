@@ -34,6 +34,11 @@ view: vw_resultados {
     sql: ${TABLE}.PROVA_STATUS ;;
   }
 
+  dimension: user_rating_raw {
+    type: string
+    sql: ${TABLE}.CLASSIFICACAO ;;
+  }
+
   dimension: user_rating {
     type: string
     sql:
@@ -110,6 +115,13 @@ view: vw_resultados {
     label: "Total Testes Feitos"
     type: count_distinct
     sql: CONCAT(${student_uuid}, ${exam_uuid}) ;;
+  }
+
+  measure: total_provas_feitas_not_ausencia {
+    label: "Total Testes Feitos (Sem Ausência)"
+    type: number
+    # sql: CONCAT(${student_uuid}, ${exam_uuid}) ;;
+    sql: COUNT(DISTINCT CASE WHEN ${user_rating_raw} != 'NO_RATING' THEN CONCAT(${student_uuid}, ${exam_uuid}) ELSE NULL END) ;;
   }
 
   measure: total_escolas {

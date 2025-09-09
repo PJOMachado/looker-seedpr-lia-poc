@@ -6,14 +6,14 @@
   crossfilter_enabled: true
   description: ''
   refresh: 15 seconds
-  preferred_slug: M53ATx4tGR08N1VDJl2YFF
+  preferred_slug: mKL74LCTpvRF8fHe5bWsMJ
   elements:
   - title: Testes realizados por dia
     name: Testes realizados por dia
     model: lia_poc
     explore: vw_resultados
     type: looker_column
-    fields: [vw_resultados.response_timestamp_date, vw_resultados.total_provas_feitas]
+    fields: [vw_resultados.response_timestamp_date, vw_resultados.total_provas_feitas_not_ausencia]
     fill_fields: [vw_resultados.response_timestamp_date]
     filters:
       vw_resultados.prova_status: FINISHED
@@ -54,9 +54,15 @@
       vw_resultados.total_provas_feitas: "#2463eb"
     series_labels:
       vw_resultados.total_provas_feitas: Testes
+      vw_resultados.total_provas_feitas_not_ausencia: Testes
+    label_rotation: 330
     show_null_points: true
     interpolation: linear
     defaults_version: 1
+    hidden_pivots: {}
+    note_state: collapsed
+    note_display: hover
+    note_text: Não considera resultados com valor "Ausência Justificada".
     listen:
       Região: vw_resultados.school_region
       Município: vw_resultados.school_county
@@ -73,7 +79,7 @@
     model: lia_poc
     explore: vw_resultados
     type: looker_grid
-    fields: [vw_resultados.school_name, vw_resultados.class_name, vw_resultados.total_provas_feitas]
+    fields: [vw_resultados.school_name, vw_resultados.class_name, vw_resultados.total_provas_feitas_not_ausencia]
     filters:
       vw_resultados.prova_status: FINISHED
     sorts: [vw_resultados.school_name, vw_resultados.class_name]
@@ -103,6 +109,7 @@
       vw_resultados.school_name: Escola
       vw_resultados.class_name: Turma
       vw_resultados.total_provas_feitas: Testes
+      vw_resultados.total_provas_feitas_not_ausencia: Testes
     series_column_widths:
       vw_resultados.school_name: 275
       vw_resultados.class_name: 300
@@ -111,6 +118,14 @@
         is_active: true
         palette:
           palette_id: 264f665b-6c7c-d1a5-3414-72fc06cc9ebd
+          collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
+          custom_colors:
+          - "#f7fbff"
+          - "#2463eb"
+      vw_resultados.total_provas_feitas_not_ausencia:
+        is_active: true
+        palette:
+          palette_id: 21dab8f2-6b07-7b52-f2e1-4970bb75fe45
           collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
           custom_colors:
           - "#f7fbff"
@@ -153,6 +168,10 @@
     labelSize: 10pt
     showLegend: true
     hidden_fields:
+    hidden_pivots: {}
+    note_state: collapsed
+    note_display: hover
+    note_text: Não considera resultados com valor "Ausência Justificada".
     listen:
       Região: vw_resultados.school_region
       Município: vw_resultados.school_county
@@ -169,7 +188,7 @@
     model: lia_poc
     explore: vw_resultados
     type: single_value
-    fields: [vw_resultados.total_provas_feitas]
+    fields: [vw_resultados.total_provas_feitas_not_ausencia]
     filters:
       vw_resultados.prova_status: FINISHED
     limit: 500
@@ -191,6 +210,10 @@
           palette_id: 56d0c358-10a0-4fd6-aa0b-b117bef527ab}, bold: false, italic: false,
         strikethrough: false, fields: !!null ''}]
     defaults_version: 1
+    hidden_pivots: {}
+    note_state: collapsed
+    note_display: hover
+    note_text: Não considera resultados com valor "Ausência Justificada".
     listen:
       Região: vw_resultados.school_region
       Município: vw_resultados.school_county
@@ -207,10 +230,10 @@
     model: lia_poc
     explore: vw_resultados
     type: looker_grid
-    fields: [vw_resultados.school_name, vw_resultados.total_provas_feitas]
+    fields: [vw_resultados.school_name, vw_resultados.total_provas_feitas_not_ausencia]
     filters:
       vw_resultados.prova_status: FINISHED
-    sorts: [vw_resultados.total_provas_feitas desc 0]
+    sorts: [vw_resultados.total_provas_feitas_not_ausencia desc 0]
     limit: 5000
     column_limit: 50
     show_view_names: false
@@ -236,11 +259,20 @@
     series_labels:
       vw_resultados.school_name: Escola
       vw_resultados.total_provas_feitas: Testes
+      vw_resultados.total_provas_feitas_not_ausencia: Testes
     series_cell_visualizations:
       vw_resultados.total_provas_feitas:
         is_active: true
         palette:
           palette_id: a304237e-b882-db01-93a5-fd1029247004
+          collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
+          custom_colors:
+          - "#f7fbff"
+          - "#2463eb"
+      vw_resultados.total_provas_feitas_not_ausencia:
+        is_active: true
+        palette:
+          palette_id: 987de184-5607-8935-59b0-db2f8cdf8706
           collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
           custom_colors:
           - "#f7fbff"
@@ -282,6 +314,10 @@
     groupBars: true
     labelSize: 10pt
     showLegend: true
+    hidden_pivots: {}
+    note_state: collapsed
+    note_display: hover
+    note_text: Não considera resultados com valor "Ausência Justificada".
     listen:
       Região: vw_resultados.school_region
       Município: vw_resultados.school_county
