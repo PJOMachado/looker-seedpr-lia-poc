@@ -6,7 +6,7 @@
   crossfilter_enabled: true
   description: ''
   refresh: 15 seconds
-  preferred_slug: mKL74LCTpvRF8fHe5bWsMJ
+  preferred_slug: YVpdplwoauExtq8Jur8QQw
   elements:
   - title: Testes realizados por dia
     name: Testes realizados por dia
@@ -68,8 +68,8 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
-      Prova: vw_resultados.exam_name
       Classificação: vw_resultados.user_rating
+      Teste: vw_resultados.exam_name
     row: 0
     col: 8
     width: 16
@@ -177,8 +177,8 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
-      Prova: vw_resultados.exam_name
       Classificação: vw_resultados.user_rating
+      Teste: vw_resultados.exam_name
     row: 8
     col: 12
     width: 12
@@ -219,8 +219,8 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
-      Prova: vw_resultados.exam_name
       Classificação: vw_resultados.user_rating
+      Teste: vw_resultados.exam_name
     row: 0
     col: 0
     width: 8
@@ -323,8 +323,8 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
-      Prova: vw_resultados.exam_name
       Classificação: vw_resultados.user_rating
+      Teste: vw_resultados.exam_name
     row: 8
     col: 0
     width: 12
@@ -389,8 +389,8 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
-      Prova: vw_resultados.exam_name
       Classificação: vw_resultados.user_rating
+      Teste: vw_resultados.exam_name
     row: 18
     col: 0
     width: 12
@@ -512,8 +512,8 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
-      Prova: vw_resultados.exam_name
       Classificação: vw_resultados.user_rating
+      Teste: vw_resultados.exam_name
     row: 18
     col: 12
     width: 12
@@ -610,8 +610,8 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
-      Prova: vw_resultados.exam_name
       Classificação: vw_resultados.user_rating
+      Teste: vw_resultados.exam_name
     row: 42
     col: 0
     width: 24
@@ -706,8 +706,8 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
-      Prova: vw_resultados.exam_name
       Classificação: vw_resultados.user_rating
+      Teste: vw_resultados.exam_name
     row: 33
     col: 0
     width: 24
@@ -792,8 +792,8 @@
       Escola: vw_resultados.school_name
       Município: vw_resultados.school_county
       Região: vw_resultados.school_region
-      Prova: vw_resultados.exam_name
       Classificação: vw_resultados.user_rating
+      Teste: vw_resultados.exam_name
     row: 52
     col: 0
     width: 24
@@ -829,8 +829,8 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
-      Prova: vw_resultados.exam_name
       Classificação: vw_resultados.user_rating
+      Teste: vw_resultados.exam_name
     row: 4
     col: 0
     width: 4
@@ -873,8 +873,8 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
-      Prova: vw_resultados.exam_name
       Classificação: vw_resultados.user_rating
+      Teste: vw_resultados.exam_name
     row: 4
     col: 4
     width: 4
@@ -963,8 +963,8 @@
       Município: vw_resultados.school_county
       Escola: vw_resultados.school_name
       Turma: vw_resultados.class_name
-      Prova: vw_resultados.exam_name
       Classificação: vw_resultados.user_rating
+      Teste: vw_resultados.exam_name
     row: 24
     col: 0
     width: 24
@@ -1035,8 +1035,8 @@
     explore: vw_resultados
     listens_to_filters: []
     field: vw_resultados.user_rating
-  - name: Prova
-    title: Prova
+  - name: Teste
+    title: Teste
     type: field_filter
     default_value: Prova Aberta - 2º semestre
     allow_multiple_values: true
