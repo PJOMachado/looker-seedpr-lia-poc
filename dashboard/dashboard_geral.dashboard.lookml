@@ -1038,7 +1038,7 @@
   - name: Teste
     title: Teste
     type: field_filter
-    default_value: Prova 1º Semestre 2026
+    default_value: SEGUNDO_SEMESTRE_2026
     allow_multiple_values: true
     required: false
     ui_config:
